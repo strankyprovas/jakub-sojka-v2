@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jakub Sojka – Pojišťovací makléř & Finanční poradce | v2</title>
+  <meta name="description" content="Srovnám pojištění od všech pojišťoven a ušetřím vám tisíce korun. Zdarma, online, bez závazků." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">Jakub <span>Sojka</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#sluzby">Pojištění</a></li>
+        <li><a href="#hypoteka">Hypotéky</a></li>
+        <li><a href="#o-mne">O mně</a></li>
+        <li><a href="#recenze">Reference</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <a href="#spz-formular" class="btn btn-primary nav-cta">Získat nabídku zdarma</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <!-- Dekorativní prvky pozadí -->
+    <div class="hero-bg-image"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-orb hero-orb--1"></div>
+    <div class="hero-orb hero-orb--2"></div>
+    <div class="hero-orb hero-orb--3"></div>
+    <div class="hero-grid-pattern"></div>
+
+    <div class="container hero-inner">
+      <div class="hero-text reveal">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Srovnávač pojištění · 100% zdarma
+        </div>
+        <h1>
+          Ušetřete na pojištění<br />
+          <span class="gradient-text">tisíce korun ročně.</span>
+        </h1>
+        <p class="hero-sub">
+          Porovnám nabídky od <strong>všech pojišťoven</strong> na trhu a najdu tu nejlepší přesně pro vás. Online, bez papírů, bez závazků.
+        </p>
+        <div class="hero-badges">
+          <div class="hero-badge-item"><span class="hbi-icon">✓</span> Zcela zdarma</div>
+          <div class="hero-badge-item"><span class="hbi-icon">✓</span> Do 24 hodin</div>
+          <div class="hero-badge-item"><span class="hbi-icon">✓</span> Bez papírů</div>
+          <div class="hero-badge-item"><span class="hbi-icon">✓</span> 500+ spokojených klientů</div>
+        </div>
+        <!-- Floating úspora karty -->
+        <div class="float-cards">
+          <div class="float-card float-card--green">
+            <span class="fc-emoji">💰</span>
+            <div>
+              <div class="fc-val">−4 200 Kč</div>
+              <div class="fc-lab">Úspora / rok</div>
+            </div>
+          </div>
+          <div class="float-card float-card--blue">
+            <span class="fc-emoji">⭐</span>
+            <div>
+              <div class="fc-val">5.0 / 80+</div>
+              <div class="fc-lab">Google recenze</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPZ FORMULÁŘ -->
+      <div class="spz-card glass-card reveal reveal--delay" id="spz-formular">
+        <div class="spz-card-header">
+          <h3>Srovnejte pojištění</h3>
+          <p>Okamžitě, zdarma, bez závazků</p>
+        </div>
+        <div class="spz-tabs">
+          <button class="spz-tab active" data-tab="auto">🚗 Auto</button>
+          <button class="spz-tab" data-tab="zivot">❤️ Životní</button>
+          <button class="spz-tab" data-tab="majetek">🏠 Majetek</button>
+        </div>
+
+        <div class="spz-content" id="tab-auto">
+          <p class="spz-label">Zadejte SPZ vozidla:</p>
+          <div class="spz-input-wrap">
+            <div class="spz-plate">
+              <span class="plate-flag">🇨🇿</span>
+              <input type="text" id="spzInput" placeholder="ABC 1234" maxlength="8" autocomplete="off" />
+            </div>
+          </div>
+          <button class="btn btn-hero btn-full" id="spzNext">
+            <span>Srovnat pojištění</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p class="spz-hint">🔒 Vaše data jsou v bezpečí</p>
+        </div>
+
+        <div class="spz-content hidden" id="tab-zivot">
+          <p class="spz-label">Srovnáme životní pojištění od všech pojišťoven.</p>
+          <button class="btn btn-hero btn-full" onclick="document.getElementById('kontaktForm').scrollIntoView({behavior:'smooth'})">Chci srovnání zdarma →</button>
+        </div>
+
+        <div class="spz-content hidden" id="tab-majetek">
+          <p class="spz-label">Srovnáme pojištění domu, bytu i domácnosti.</p>
+          <button class="btn btn-hero btn-full" onclick="document.getElementById('kontaktForm').scrollIntoView({behavior:'smooth'})">Chci srovnání zdarma →</button>
+        </div>
+
+        <div class="spz-form-expand hidden" id="spzFormExpand">
+          <div class="form-divider"><span>Vaše kontaktní údaje</span></div>
+          <div class="form-row">
+            <input type="text" id="spzJmeno" placeholder="Celé jméno" />
+            <input type="tel" id="spzTelefon" placeholder="Telefon (+420)" />
+          </div>
+          <input type="email" id="spzEmail" placeholder="E-mailová adresa" />
+          <p class="form-spz-display">SPZ: <strong id="spzValue"></strong></p>
+          <button class="btn btn-hero btn-full" id="spzSubmit">Odeslat a získat nabídku →</button>
+          <p class="form-gdpr">Odesláním souhlasíte se <a href="#">zpracováním osobních údajů</a>.</p>
+        </div>
+
+        <div class="spz-success hidden" id="spzSuccess">
+          <div class="success-icon">✓</div>
+          <h3>Poptávka odeslána!</h3>
+          <p>Ozvu se vám do 24 hodin s nejlepší nabídkou.</p>
+        </div>
+
+        <div class="spz-trust">
+          <div class="trust-item">🏆 <span>80+ recenzí</span></div>
+          <div class="trust-item">🔐 <span>GDPR</span></div>
+          <div class="trust-item">⚡ <span>24h odpověď</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partneři -->
+    <div class="partners-bar">
+      <div class="container partners-bar-inner">
+        <p class="partners-label">Srovnávám nabídky od:</p>
+        <div class="partners-track">
+          <div class="partners-slide">
+            <span class="partner-logo">Allianz</span>
+            <span class="partner-logo">Česká pojišťovna</span>
+            <span class="partner-logo">Kooperativa</span>
+            <span class="partner-logo">Generali</span>
+            <span class="partner-logo">ČSOB Pojišťovna</span>
+            <span class="partner-logo">Uniqa</span>
+            <span class="partner-logo">Slavia pojišťovna</span>
+            <span class="partner-logo">Direct pojišťovna</span>
+            <span class="partner-logo">Maxima pojišťovna</span>
+          </div>
+          <div class="partners-slide" aria-hidden="true">
+            <span class="partner-logo">Allianz</span>
+            <span class="partner-logo">Česká pojišťovna</span>
+            <span class="partner-logo">Kooperativa</span>
+            <span class="partner-logo">Generali</span>
+            <span class="partner-logo">ČSOB Pojišťovna</span>
+            <span class="partner-logo">Uniqa</span>
+            <span class="partner-logo">Slavia pojišťovna</span>
+            <span class="partner-logo">Direct pojišťovna</span>
+            <span class="partner-logo">Maxima pojišťovna</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATISTIKY -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-box reveal">
+          <div class="stat-icon">👥</div>
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-plus">+</div>
+          <div class="stat-label">Spokojených klientů</div>
+        </div>
+        <div class="stat-box reveal reveal--delay-1">
+          <div class="stat-icon">📋</div>
+          <div class="stat-number" data-target="800">0</div>
+          <div class="stat-plus">+</div>
+          <div class="stat-label">Uzavřených smluv</div>
+        </div>
+        <div class="stat-box reveal reveal--delay-2">
+          <div class="stat-icon">💰</div>
+          <div class="stat-number" data-target="98">0</div>
+          <div class="stat-plus">%</div>
+          <div class="stat-label">Klientů doporučuje</div>
+        </div>
+        <div class="stat-box reveal reveal--delay-3">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-number" data-target="5" data-decimal="1">0</div>
+          <div class="stat-plus"></div>
+          <div class="stat-label">Průměrné hodnocení</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JAK TO FUNGUJE -->
+  <section class="how-it-works" id="jak-to-funguje">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-tag">Jednoduchý proces</p>
+        <h2>Jak to celé funguje?</h2>
+        <p class="section-sub">Vyřídíme vše online, bez papírování a zbytečného cestování.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-num">01</div>
+          <div class="step-icon-wrap step-icon-wrap--blue">
+            <span>📋</span>
+          </div>
+          <h3>Vyplníte krátký formulář</h3>
+          <p>Zadáte SPZ nebo typ pojištění, který vás zajímá. Trvá to doslova minutu.</p>
+        </div>
+        <div class="step-connector reveal reveal--delay-1">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">→</div>
+        </div>
+        <div class="step-card reveal reveal--delay-1">
+          <div class="step-num">02</div>
+          <div class="step-icon-wrap step-icon-wrap--purple">
+            <span>🔍</span>
+          </div>
+          <h3>Srovnám nabídky za vás</h3>
+          <p>Prověřím nabídky od všech pojišťoven na trhu a vyberu tu nejlepší pro váš případ.</p>
+        </div>
+        <div class="step-connector reveal reveal--delay-2">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">→</div>
+        </div>
+        <div class="step-card reveal reveal--delay-2">
+          <div class="step-num">03</div>
+          <div class="step-icon-wrap step-icon-wrap--green">
+            <span>✅</span>
+          </div>
+          <h3>Ušetříte tisíce korun</h3>
+          <p>Vše vyřídíme elektronicky. Žádné papíry, žádné pobočky. Jen úspora peněz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLUŽBY -->
+  <section class="sluzby" id="sluzby">
+    <div class="sluzby-bg">
+      <div class="sluzby-blob sluzby-blob--1"></div>
+      <div class="sluzby-blob sluzby-blob--2"></div>
+    </div>
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-tag">Co nabízím</p>
+        <h2>Kompletní finanční poradenství</h2>
+        <p class="section-sub">Postarám se o celou vaši finanční ochranu pod jednou střechou.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card service-card--auto reveal">
+          <div class="service-card-bg"></div>
+          <div class="service-icon-big">🚗</div>
+          <h3>Pojištění vozidla</h3>
+          <p>Povinné ručení i havarijní pojištění za nejlepší cenu na trhu.</p>
+          <ul>
+            <li>Povinné ručení</li>
+            <li>Havarijní pojištění</li>
+            <li>Úrazové pojištění řidiče</li>
+            <li>Asistence a odtah 24/7</li>
+          </ul>
+          <div class="service-savings">Průměrná úspora <strong>2 500 Kč/rok</strong></div>
+          <a href="#spz-formular" class="btn btn-service">Srovnat pojištění →</a>
+        </div>
+
+        <div class="service-card service-card--life reveal reveal--delay-1">
+          <div class="service-badge-new">⭐ Nejoblíbenější</div>
+          <div class="service-card-bg"></div>
+          <div class="service-icon-big">❤️</div>
+          <h3>Životní pojištění</h3>
+          <p>Chraňte sebe i rodinu pro případ nemoci, úrazu nebo neočekávané situace.</p>
+          <ul>
+            <li>Životní pojištění</li>
+            <li>Úrazové pojištění</li>
+            <li>Pojištění odpovědnosti</li>
+            <li>Pojištění domácích mazlíčků</li>
+          </ul>
+          <div class="service-savings">Průměrná úspora <strong>4 800 Kč/rok</strong></div>
+          <a href="#kontakt" class="btn btn-service">Chci nabídku →</a>
+        </div>
+
+        <div class="service-card service-card--property reveal reveal--delay-2">
+          <div class="service-card-bg"></div>
+          <div class="service-icon-big">🏠</div>
+          <h3>Pojištění majetku</h3>
+          <p>Domov, byt, chata nebo zahrádka. Pojistíme váš majetek za rozumnou cenu.</p>
+          <ul>
+            <li>Pojištění domu / bytu</li>
+            <li>Pojištění domácnosti</li>
+            <li>Rekreační objekty</li>
+            <li>Pojištění podnikatele</li>
+          </ul>
+          <div class="service-savings">Průměrná úspora <strong>2 100 Kč/rok</strong></div>
+          <a href="#kontakt" class="btn btn-service">Chci nabídku →</a>
+        </div>
+
+        <div class="service-card service-card--travel reveal">
+          <div class="service-card-bg"></div>
+          <div class="service-icon-big">✈️</div>
+          <h3>Cestovní pojištění</h3>
+          <p>Bezstarostná dovolená kdekoliv na světě. Krytí zdravotní péče, storna i ztráty zavazadel.</p>
+          <ul>
+            <li>Zdravotní péče v zahraničí</li>
+            <li>Pojištění storna zájezdu</li>
+            <li>Ztráta zavazadel</li>
+            <li>Odpovědnost v zahraničí</li>
+          </ul>
+          <div class="service-savings">Od <strong>29 Kč / den</strong></div>
+          <a href="#kontakt" class="btn btn-service">Chci nabídku →</a>
+        </div>
+
+        <div class="service-card service-card--mortgage reveal reveal--delay-1">
+          <div class="service-card-bg"></div>
+          <div class="service-icon-big">🏦</div>
+          <h3>Hypotéky a úvěry</h3>
+          <p>Srovnám hypotéky od všech bank a najdu tu s nejnižší splátkou pro váš projekt.</p>
+          <ul>
+            <li>Hypoteční úvěr</li>
+            <li>Refinancování hypotéky</li>
+            <li>Spotřebitelský úvěr</li>
+            <li>Rekonstrukční úvěr</li>
+          </ul>
+          <div class="service-savings">Ušetřete na <strong>úrokové sazbě</strong></div>
+          <a href="#hypoteka" class="btn btn-service">Hypoteční kalkulačka →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O MNĚ -->
+  <section class="o-mne" id="o-mne">
+    <div class="o-mne-decoration">
+      <div class="deco-circle deco-circle--1"></div>
+      <div class="deco-circle deco-circle--2"></div>
+      <div class="deco-dots"></div>
+    </div>
+    <div class="container o-mne-inner">
+      <div class="o-mne-photo reveal">
+        <div class="photo-frame">
+          <img
+            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85&fit=crop"
+            alt="Jakub Sojka – finanční poradce"
+            class="advisor-photo"
+          />
+          <div class="photo-badge">
+            <span>🏆</span>
+            <div>
+              <strong>Certifikovaný</strong>
+              <span>pojišťovací makléř</span>
+            </div>
+          </div>
+        </div>
+        <div class="experience-card">
+          <div class="exp-num">8+</div>
+          <div class="exp-label">let zkušeností v oboru</div>
+        </div>
+      </div>
+      <div class="o-mne-text reveal reveal--delay-1">
+        <p class="section-tag">O mně</p>
+        <h2>Jsem Jakub Sojka,<br /><span class="gradient-text-blue">váš nezávislý poradce</span></h2>
+        <p>Pojišťovnictví a finančnímu poradenství se věnuji již více než 8 let. Mým cílem je vždy najít pro klienta to nejlepší řešení – takové, které bych doporučil vlastní rodině.</p>
+        <p>Jako <strong>nezávislý makléř</strong> nejsem vázán na žádnou pojišťovnu. Mohu skutečně objektivně porovnat celý trh a doporučit vám to, co je pro vás nejvýhodnější – ne to, co pojišťovně přináší největší zisk.</p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-icon">🎯</div>
+            <div>
+              <strong>Osobní přístup</strong>
+              <span>Každý klient je pro mě individuální případ</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🔍</div>
+            <div>
+              <strong>Nezávislé srovnání</strong>
+              <span>Porovnám celý trh, ne jen vybrané pojišťovny</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">📱</div>
+            <div>
+              <strong>Vždy k dispozici</strong>
+              <span>Pomůžu i při škodní události, 7 dní v týdnu</span>
+            </div>
+          </div>
+        </div>
+        <div class="o-mne-btns">
+          <a href="#kontakt" class="btn btn-primary btn-glow">Kontaktovat →</a>
+          <a href="#recenze" class="btn btn-outline">Reference klientů</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÚSPORY KLIENTŮ -->
+  <section class="uspory" id="uspory">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-tag">Reálné výsledky</p>
+        <h2>Kolik ušetřili moji klienti?</h2>
+        <p class="section-sub">Konkrétní příklady z praxe – porovnání starého a nového pojištění.</p>
+      </div>
+      <div class="uspory-grid">
+        <div class="uspory-card reveal">
+          <div class="uspory-header uspory-header--blue">
+            <span class="uspory-emoji">🚗</span>
+            <div>
+              <div class="uspory-type">Povinné ručení</div>
+              <div class="uspory-client">Jan K.</div>
+            </div>
+          </div>
+          <div class="uspory-detail-text">BMW 3 Series, 42 let, Praha</div>
+          <div class="uspory-compare">
+            <div class="compare-old">
+              <span>Původně platil</span>
+              <strong>12 400 Kč/rok</strong>
+            </div>
+            <div class="compare-arrow">→</div>
+            <div class="compare-new">
+              <span>Teď platí</span>
+              <strong>9 200 Kč/rok</strong>
+            </div>
+          </div>
+          <div class="uspory-result">
+            <span class="savings-label">Roční úspora</span>
+            <span class="savings-amount">3 200 Kč</span>
+          </div>
+        </div>
+
+        <div class="uspory-card uspory-card--featured reveal reveal--delay-1">
+          <div class="uspory-star">⭐ Největší úspora</div>
+          <div class="uspory-header uspory-header--pink">
+            <span class="uspory-emoji">❤️</span>
+            <div>
+              <div class="uspory-type">Životní pojištění</div>
+              <div class="uspory-client">Petra M.</div>
+            </div>
+          </div>
+          <div class="uspory-detail-text">Rodina se 2 dětmi, Brno</div>
+          <div class="uspory-compare">
+            <div class="compare-old">
+              <span>Původně platila</span>
+              <strong>18 240 Kč/rok</strong>
+            </div>
+            <div class="compare-arrow">→</div>
+            <div class="compare-new">
+              <span>Teď platí</span>
+              <strong>12 600 Kč/rok</strong>
+            </div>
+          </div>
+          <div class="uspory-result uspory-result--gold">
+            <span class="savings-label">Roční úspora</span>
+            <span class="savings-amount">5 640 Kč</span>
+          </div>
+        </div>
+
+        <div class="uspory-card reveal reveal--delay-2">
+          <div class="uspory-header uspory-header--orange">
+            <span class="uspory-emoji">🚗</span>
+            <div>
+              <div class="uspory-type">Havarijní pojištění</div>
+              <div class="uspory-client">Tomáš R.</div>
+            </div>
+          </div>
+          <div class="uspory-detail-text">VW Passat, firemní auto</div>
+          <div class="uspory-compare">
+            <div class="compare-old">
+              <span>Původně platil</span>
+              <strong>19 600 Kč/rok</strong>
+            </div>
+            <div class="compare-arrow">→</div>
+            <div class="compare-new">
+              <span>Teď platí</span>
+              <strong>15 500 Kč/rok</strong>
+            </div>
+          </div>
+          <div class="uspory-result">
+            <span class="savings-label">Roční úspora</span>
+            <span class="savings-amount">4 100 Kč</span>
+          </div>
+        </div>
+
+        <div class="uspory-card reveal reveal--delay-3">
+          <div class="uspory-header uspory-header--green">
+            <span class="uspory-emoji">🏠</span>
+            <div>
+              <div class="uspory-type">Pojištění domu</div>
+              <div class="uspory-client">Lenka a Jiří S.</div>
+            </div>
+          </div>
+          <div class="uspory-detail-text">Rodinný dům 120 m², Ostrava</div>
+          <div class="uspory-compare">
+            <div class="compare-old">
+              <span>Původně platili</span>
+              <strong>8 580 Kč/rok</strong>
+            </div>
+            <div class="compare-arrow">→</div>
+            <div class="compare-new">
+              <span>Teď platí</span>
+              <strong>5 700 Kč/rok</strong>
+            </div>
+          </div>
+          <div class="uspory-result">
+            <span class="savings-label">Roční úspora</span>
+            <span class="savings-amount">2 880 Kč</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="uspory-cta reveal">
+        <p>Chcete také ušetřit? Srovnání je zcela zdarma.</p>
+        <a href="#spz-formular" class="btn btn-primary btn-lg btn-glow">Srovnat pojištění zdarma →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE RECENZE -->
+  <section class="recenze" id="recenze">
+    <div class="recenze-bg">
+      <div class="recenze-orb recenze-orb--1"></div>
+      <div class="recenze-orb recenze-orb--2"></div>
+    </div>
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-tag">Reference</p>
+        <h2>Co říkají klienti</h2>
+        <div class="google-rating">
+          <div class="g-stars">★★★★★</div>
+          <div class="g-info">
+            <strong>5.0</strong>
+            <span>· 80+ recenzí na Google</span>
+          </div>
+          <a href="#" class="g-link" id="googleReviewLink" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+            Zobrazit na Google
+          </a>
+        </div>
+      </div>
+
+      <div class="reviews-grid" id="reviewsGrid">
+        <div class="review-card reveal">
+          <div class="review-top">
+            <div class="review-avatar" style="--av-color: #3b82f6">JN</div>
+            <div class="review-meta">
+              <div class="review-name">Jana Nováková</div>
+              <div class="review-stars">★★★★★</div>
+              <div class="review-date">Před 2 týdny</div>
+            </div>
+            <div class="google-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+            </div>
+          </div>
+          <p class="review-text">"Jakub mi ušetřil přes 4 000 Kč ročně na povinném ručení. Vše vyřídil rychle a online, nemusela jsem nikam chodit. Moc děkuji!"</p>
+        </div>
+
+        <div class="review-card reveal reveal--delay-1">
+          <div class="review-top">
+            <div class="review-avatar" style="--av-color: #8b5cf6">MP</div>
+            <div class="review-meta">
+              <div class="review-name">Martin Procházka</div>
+              <div class="review-stars">★★★★★</div>
+              <div class="review-date">Před měsícem</div>
+            </div>
+            <div class="google-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+            </div>
+          </div>
+          <p class="review-text">"Srovnal mi životní pojištění a ušetřil skoro 6 000 Kč. Byl velmi profesionální a trpělivě mi vše vysvětlil. Jednoznačně doporučuji."</p>
+        </div>
+
+        <div class="review-card reveal reveal--delay-2">
+          <div class="review-top">
+            <div class="review-avatar" style="--av-color: #10b981">LK</div>
+            <div class="review-meta">
+              <div class="review-name">Lucie Kováčová</div>
+              <div class="review-stars">★★★★★</div>
+              <div class="review-date">Před 3 týdny</div>
+            </div>
+            <div class="google-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+            </div>
+          </div>
+          <p class="review-text">"Konečně někdo, kdo to myslí s klientem vážně. Porovnal pojišťovny a vysvětlil rozdíly. Teď mám lepší pojistku za méně peněz."</p>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-top">
+            <div class="review-avatar" style="--av-color: #f59e0b">PH</div>
+            <div class="review-meta">
+              <div class="review-name">Pavel Horák</div>
+              <div class="review-stars">★★★★★</div>
+              <div class="review-date">Před 2 měsíci</div>
+            </div>
+            <div class="google-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+            </div>
+          </div>
+          <p class="review-text">"Pomohl mi s hypotékou i pojišťovnou. Ušetřil jsem peníze na obou frontech. Komunikace na jedničku, rychlé a profesionální."</p>
+        </div>
+
+        <div class="review-card reveal reveal--delay-1">
+          <div class="review-top">
+            <div class="review-avatar" style="--av-color: #ef4444">SK</div>
+            <div class="review-meta">
+              <div class="review-name">Simona Kopecká</div>
+              <div class="review-stars">★★★★★</div>
+              <div class="review-date">Před týdnem</div>
+            </div>
+            <div class="google-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+            </div>
+          </div>
+          <p class="review-text">"Super přístup, vše rychle a bez starostí. Doporučila jsem ho celé rodině a všichni jsou spokojení. Profesionál na svém místě."</p>
+        </div>
+
+        <div class="review-card reveal reveal--delay-2">
+          <div class="review-top">
+            <div class="review-avatar" style="--av-color: #06b6d4">RV</div>
+            <div class="review-meta">
+              <div class="review-name">Radek Vlček</div>
+              <div class="review-stars">★★★★★</div>
+              <div class="review-date">Před 5 dny</div>
+            </div>
+            <div class="google-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+            </div>
+          </div>
+          <p class="review-text">"Oslovil jsem Jakuba na doporučení. Ušetřil mi na autě i domě přes 7 000 Kč ročně. Skvělá práce, víc jsem čekat nemohl!"</p>
+        </div>
+      </div>
+
+      <div class="reviews-cta reveal">
+        <a href="#" class="btn btn-white-outline" id="allReviewsBtn" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+          Zobrazit všechny recenze na Google
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HYPOTEČNÍ KALKULAČKA -->
+  <section class="hypoteka" id="hypoteka">
+    <div class="container">
+      <div class="hypoteka-inner">
+        <div class="hypoteka-left reveal">
+          <p class="section-tag">Kalkulačka</p>
+          <h2>Hypoteční<br /><span class="gradient-text-blue">kalkulačka</span></h2>
+          <p class="hypoteka-sub">Spočítejte si měsíční splátku a zjistěte, kolik zaplatíte celkem. Pak vám najdu nejlepší nabídku na trhu.</p>
+
+          <div class="calc-form">
+            <div class="calc-field">
+              <label>Výše hypotéky <span class="calc-live" id="calcVyseDisplay">3 000 000 Kč</span></label>
+              <input type="range" id="calcVyseRange" min="500000" max="10000000" step="100000" value="3000000" class="calc-range" />
+              <div class="range-labels"><span>500 tis.</span><span>10 mil.</span></div>
+            </div>
+            <div class="calc-field">
+              <label>Úroková sazba <span class="calc-live" id="calcSazbaDisplay">4,5 %</span></label>
+              <input type="range" id="calcSazbaRange" min="1" max="10" step="0.1" value="4.5" class="calc-range calc-range--purple" />
+              <div class="range-labels"><span>1 %</span><span>10 %</span></div>
+            </div>
+            <div class="calc-field">
+              <label>Doba splácení <span class="calc-live" id="calcDobaDisplay">25 let</span></label>
+              <input type="range" id="calcDobaRange" min="5" max="30" step="1" value="25" class="calc-range calc-range--green" />
+              <div class="range-labels"><span>5 let</span><span>30 let</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="hypoteka-right reveal reveal--delay-1">
+          <div class="calc-result" id="calcResult">
+            <div class="calc-result-main">
+              <div class="calc-result-icon">📊</div>
+              <p class="calc-result-label">Měsíční splátka</p>
+              <p class="calc-result-value" id="calcSplatka">15 830 Kč</p>
+            </div>
+            <div class="calc-result-details">
+              <div class="calc-detail">
+                <span>Celkem zaplatíte</span>
+                <strong id="calcCelkem">–</strong>
+              </div>
+              <div class="calc-detail calc-detail--highlight">
+                <span>Z toho úroky</span>
+                <strong id="calcUroky">–</strong>
+              </div>
+              <div class="calc-detail">
+                <span>Jistina (úvěr)</span>
+                <strong id="calcJistina">–</strong>
+              </div>
+            </div>
+
+            <div class="calc-cta-block">
+              <div class="calc-cta-header">
+                <div class="calc-cta-icon">💼</div>
+                <p>Chcete nejlepší hypotéku na trhu?</p>
+              </div>
+              <div class="calc-contact-form" id="calcContactForm">
+                <input type="text" id="calcJmeno" placeholder="Celé jméno" />
+                <input type="tel" id="calcTelefon" placeholder="Telefon (+420)" />
+                <input type="email" id="calcEmail" placeholder="E-mail" />
+                <button class="btn btn-primary btn-full btn-glow" id="calcSubmit">Chci nejlepší hypotéku →</button>
+                <p class="form-gdpr">Souhlasím se <a href="#">zpracováním osobních údajů</a>.</p>
+              </div>
+              <div class="calc-success hidden" id="calcSuccess">
+                <div class="success-icon">✓</div>
+                <p>Ozveme se vám do 24 hodin!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEZÁVAZNÁ KALKULACE -->
+  <section class="kalk-section" id="spocitat">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-tag">Zdarma, bez závazků</p>
+        <h2>Spočítejte si cenu <span class="gradient-text-blue">pojištění</span></h2>
+        <p class="section-sub">Vyplňte pár údajů a orientační cenu vám pošleme zdarma na e-mail. Ozvu se do 24 hodin.</p>
+      </div>
+
+      <div class="kalk-card reveal">
+        <!-- Taby -->
+        <div class="kalk-tabs" id="kalkTabs">
+          <button class="kalk-tab active" data-pane="auto">
+            <span class="kalk-tab-icon">🚗</span>
+            <span class="kalk-tab-label">Pojištění auta</span>
+          </button>
+          <button class="kalk-tab" data-pane="zivot">
+            <span class="kalk-tab-icon">❤️</span>
+            <span class="kalk-tab-label">Životní pojištění</span>
+          </button>
+          <button class="kalk-tab" data-pane="majetek">
+            <span class="kalk-tab-icon">🏠</span>
+            <span class="kalk-tab-label">Pojištění majetku</span>
+          </button>
+          <button class="kalk-tab" data-pane="hypoteka">
+            <span class="kalk-tab-icon">🏦</span>
+            <span class="kalk-tab-label">Hypotéka</span>
+          </button>
+          <button class="kalk-tab" data-pane="cestovni">
+            <span class="kalk-tab-icon">✈️</span>
+            <span class="kalk-tab-label">Cestovní pojištění</span>
+          </button>
+        </div>
+
+        <!-- Tělo kalkulačky -->
+        <div class="kalk-body" id="kalkBody">
+
+          <!-- ===== AUTO ===== -->
+          <div class="kalk-pane active" id="kpane-auto">
+            <div class="kalk-grid">
+              <div class="kalk-fields">
+                <div class="kalk-field-group">
+                  <label class="kalk-label">SPZ vozidla</label>
+                  <div class="kalk-spz-plate">
+                    <span class="kalk-spz-flag">🇨🇿</span>
+                    <input type="text" class="kalk-spz-input" id="kAutoSpz" placeholder="ABC 1234" maxlength="8" autocomplete="off" />
+                  </div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Typ pojištění</label>
+                  <div class="kalk-pills" data-group="autoTyp">
+                    <button class="kalk-pill active" data-val="povinnne">Povinné ručení</button>
+                    <button class="kalk-pill" data-val="havarie">Havarijní pojištění</button>
+                    <button class="kalk-pill" data-val="obe">Obě varianty</button>
+                  </div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Rok výroby vozidla</label>
+                  <select class="kalk-select" id="kAutoRok">
+                    <option value="">Vyberte rok výroby</option>
+                    <option value="2020">2020 – 2024</option>
+                    <option value="2015">2015 – 2019</option>
+                    <option value="2010">2010 – 2014</option>
+                    <option value="2005">2005 – 2009</option>
+                    <option value="2000">Starší</option>
+                  </select>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Věk hlavního řidiče</label>
+                  <select class="kalk-select" id="kAutoVek">
+                    <option value="">Vyberte věk</option>
+                    <option value="18">18 – 25 let</option>
+                    <option value="26">26 – 35 let</option>
+                    <option value="36">36 – 45 let</option>
+                    <option value="46">46 – 55 let</option>
+                    <option value="56">56+ let</option>
+                  </select>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Aktuálně platíte <span class="kalk-live-val" id="kAutoPlatiVal">8 000 Kč/rok</span></label>
+                  <input type="range" class="kalk-range" id="kAutoplati" min="1000" max="30000" step="500" value="8000" />
+                  <div class="kalk-range-limits"><span>1 000 Kč</span><span>30 000 Kč</span></div>
+                </div>
+              </div>
+              <div class="kalk-contact-col">
+                <h4 style="font-size:1rem;font-weight:800;margin-bottom:4px;">Kam poslat kalkulaci?</h4>
+                <p style="font-size:.82rem;color:var(--text-400);margin-bottom:16px;">Orientační cenu vám zašleme na e-mail zdarma.</p>
+                <div class="kalk-contact-fields">
+                  <input type="text" class="kalk-input kalk-f-jmeno" placeholder="Celé jméno" />
+                  <input type="email" class="kalk-input kalk-f-email" placeholder="E-mailová adresa" />
+                  <input type="tel" class="kalk-input kalk-f-telefon" placeholder="Telefon (+420)" />
+                  <button class="btn btn-primary btn-full btn-glow kalk-odeslat">Nezávazně spočítat cenu →</button>
+                  <p class="form-gdpr">Odesláním souhlasíte se <a href="#">zpracováním osobních údajů</a>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== ŽIVOTNÍ ===== -->
+          <div class="kalk-pane" id="kpane-zivot">
+            <div class="kalk-grid">
+              <div class="kalk-fields">
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Věk pojistníka <span class="kalk-live-val" id="kZivotVekVal">35 let</span></label>
+                  <input type="range" class="kalk-range" id="kZivotVek" min="18" max="70" step="1" value="35" />
+                  <div class="kalk-range-limits"><span>18 let</span><span>70 let</span></div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Pohlaví</label>
+                  <div class="kalk-pills" data-group="zivotPohlavi">
+                    <button class="kalk-pill active" data-val="muz">Muž</button>
+                    <button class="kalk-pill" data-val="zena">Žena</button>
+                  </div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Kouříte?</label>
+                  <div class="kalk-pills" data-group="zivotKurak">
+                    <button class="kalk-pill active" data-val="ne">Ne, nekouřím</button>
+                    <button class="kalk-pill" data-val="ano">Ano, kouřím</button>
+                  </div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Co chcete pojistit? <span style="font-weight:400;color:var(--text-400)">(lze vybrat více)</span></label>
+                  <div class="kalk-checkboxes">
+                    <label class="kalk-check"><input type="checkbox" value="smrt" checked /> Smrt</label>
+                    <label class="kalk-check"><input type="checkbox" value="invalidita" checked /> Trvalá invalidita</label>
+                    <label class="kalk-check"><input type="checkbox" value="kriticka" /> Kritická nemoc</label>
+                    <label class="kalk-check"><input type="checkbox" value="uraz" /> Úraz</label>
+                    <label class="kalk-check"><input type="checkbox" value="pn" /> Pracovní neschopnost</label>
+                  </div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Měsíční rozpočet <span class="kalk-live-val" id="kZivotBudgetVal">1 000 Kč/měs</span></label>
+                  <input type="range" class="kalk-range" id="kZivotBudget" min="300" max="5000" step="50" value="1000" />
+                  <div class="kalk-range-limits"><span>300 Kč/měs</span><span>5 000 Kč/měs</span></div>
+                </div>
+              </div>
+              <div class="kalk-contact-col">
+                <h4 style="font-size:1rem;font-weight:800;margin-bottom:4px;">Kam poslat kalkulaci?</h4>
+                <p style="font-size:.82rem;color:var(--text-400);margin-bottom:16px;">Orientační cenu vám zašleme na e-mail zdarma.</p>
+                <div class="kalk-contact-fields">
+                  <input type="text" class="kalk-input kalk-f-jmeno" placeholder="Celé jméno" />
+                  <input type="email" class="kalk-input kalk-f-email" placeholder="E-mailová adresa" />
+                  <input type="tel" class="kalk-input kalk-f-telefon" placeholder="Telefon (+420)" />
+                  <button class="btn btn-primary btn-full btn-glow kalk-odeslat">Nezávazně spočítat cenu →</button>
+                  <p class="form-gdpr">Odesláním souhlasíte se <a href="#">zpracováním osobních údajů</a>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== MAJETEK ===== -->
+          <div class="kalk-pane" id="kpane-majetek">
+            <div class="kalk-grid">
+              <div class="kalk-fields">
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Co chcete pojistit?</label>
+                  <div class="kalk-pills" data-group="majetekTyp">
+                    <button class="kalk-pill active" data-val="dum">Rodinný dům</button>
+                    <button class="kalk-pill" data-val="byt">Byt</button>
+                    <button class="kalk-pill" data-val="domacnost">Domácnost</button>
+                    <button class="kalk-pill" data-val="chata">Chata / chalupa</button>
+                  </div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Plocha nemovitosti <span class="kalk-live-val" id="kMajetekPlochaVal">100 m²</span></label>
+                  <input type="range" class="kalk-range" id="kMajetekPlocha" min="20" max="500" step="5" value="100" />
+                  <div class="kalk-range-limits"><span>20 m²</span><span>500 m²</span></div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Rok výstavby</label>
+                  <select class="kalk-select" id="kMajetekRok">
+                    <option value="">Vyberte rok výstavby</option>
+                    <option value="2000">Po roce 2000</option>
+                    <option value="1980">1980 – 2000</option>
+                    <option value="1960">1960 – 1980</option>
+                    <option value="1900">Před rokem 1960</option>
+                  </select>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">PSČ (první 3 číslice)</label>
+                  <input type="text" class="kalk-input" id="kMajetekPsc" placeholder="např. 602" maxlength="3" style="max-width:160px;" />
+                </div>
+              </div>
+              <div class="kalk-contact-col">
+                <h4 style="font-size:1rem;font-weight:800;margin-bottom:4px;">Kam poslat kalkulaci?</h4>
+                <p style="font-size:.82rem;color:var(--text-400);margin-bottom:16px;">Orientační cenu vám zašleme na e-mail zdarma.</p>
+                <div class="kalk-contact-fields">
+                  <input type="text" class="kalk-input kalk-f-jmeno" placeholder="Celé jméno" />
+                  <input type="email" class="kalk-input kalk-f-email" placeholder="E-mailová adresa" />
+                  <input type="tel" class="kalk-input kalk-f-telefon" placeholder="Telefon (+420)" />
+                  <button class="btn btn-primary btn-full btn-glow kalk-odeslat">Nezávazně spočítat cenu →</button>
+                  <p class="form-gdpr">Odesláním souhlasíte se <a href="#">zpracováním osobních údajů</a>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== HYPOTÉKA ===== -->
+          <div class="kalk-pane" id="kpane-hypoteka">
+            <div class="kalk-grid">
+              <div class="kalk-fields">
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Účel úvěru</label>
+                  <div class="kalk-pills" data-group="hypUcel">
+                    <button class="kalk-pill active" data-val="koupe">Koupě nemovitosti</button>
+                    <button class="kalk-pill" data-val="refinancovani">Refinancování</button>
+                    <button class="kalk-pill" data-val="rekonstrukce">Rekonstrukce</button>
+                  </div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Hodnota nemovitosti <span class="kalk-live-val" id="kHypHodnotaVal">4 000 000 Kč</span></label>
+                  <input type="range" class="kalk-range" id="kHypHodnota" min="1000000" max="15000000" step="100000" value="4000000" />
+                  <div class="kalk-range-limits"><span>1 mil. Kč</span><span>15 mil. Kč</span></div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Výše hypotéky <span class="kalk-live-val" id="kHypVyseVal">3 000 000 Kč</span> <span class="kalk-ltv-badge" id="kHypLtv">LTV 75 %</span></label>
+                  <input type="range" class="kalk-range" id="kHypVyse" min="500000" max="15000000" step="100000" value="3000000" />
+                  <div class="kalk-range-limits"><span>500 tis. Kč</span><span>15 mil. Kč</span></div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Doba splatnosti <span class="kalk-live-val" id="kHypDobaVal">25 let</span></label>
+                  <input type="range" class="kalk-range" id="kHypDoba" min="5" max="30" step="1" value="25" />
+                  <div class="kalk-range-limits"><span>5 let</span><span>30 let</span></div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Typ příjmu</label>
+                  <div class="kalk-pills" data-group="hypPrijem">
+                    <button class="kalk-pill active" data-val="zamestnanec">Zaměstnanec</button>
+                    <button class="kalk-pill" data-val="osvc">OSVČ</button>
+                    <button class="kalk-pill" data-val="firma">Firma</button>
+                  </div>
+                </div>
+              </div>
+              <div class="kalk-contact-col">
+                <h4 style="font-size:1rem;font-weight:800;margin-bottom:4px;">Kam poslat kalkulaci?</h4>
+                <p style="font-size:.82rem;color:var(--text-400);margin-bottom:16px;">Orientační cenu vám zašleme na e-mail zdarma.</p>
+                <div class="kalk-contact-fields">
+                  <input type="text" class="kalk-input kalk-f-jmeno" placeholder="Celé jméno" />
+                  <input type="email" class="kalk-input kalk-f-email" placeholder="E-mailová adresa" />
+                  <input type="tel" class="kalk-input kalk-f-telefon" placeholder="Telefon (+420)" />
+                  <button class="btn btn-primary btn-full btn-glow kalk-odeslat">Nezávazně spočítat cenu →</button>
+                  <p class="form-gdpr">Odesláním souhlasíte se <a href="#">zpracováním osobních údajů</a>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== CESTOVNÍ ===== -->
+          <div class="kalk-pane" id="kpane-cestovni">
+            <div class="kalk-grid">
+              <div class="kalk-fields">
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Destinace</label>
+                  <div class="kalk-pills" data-group="cestDest">
+                    <button class="kalk-pill active" data-val="evropa">Evropa</button>
+                    <button class="kalk-pill" data-val="svet">Celý svět</button>
+                    <button class="kalk-pill" data-val="usa">USA / Kanada</button>
+                  </div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Typ pojistky</label>
+                  <div class="kalk-pills" data-group="cestTyp">
+                    <button class="kalk-pill active" data-val="jednraz">Jednorázové</button>
+                    <button class="kalk-pill" data-val="rocni">Roční (neomezený počet cest)</button>
+                  </div>
+                </div>
+                <div class="kalk-field-group" id="kCestDnyGroup">
+                  <label class="kalk-label">Počet dní <span class="kalk-live-val" id="kCestDnyVal">14 dní</span></label>
+                  <input type="range" class="kalk-range" id="kCestDny" min="1" max="90" step="1" value="14" />
+                  <div class="kalk-range-limits"><span>1 den</span><span>90 dní</span></div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Počet cestujících</label>
+                  <div style="display:flex;align-items:center;gap:12px;">
+                    <div class="kalk-stepper">
+                      <button class="kalk-step-btn" id="kCestMinus">−</button>
+                      <span class="kalk-step-val" id="kCestOsobyVal">2</span>
+                      <button class="kalk-step-btn" id="kCestPlus">+</button>
+                    </div>
+                    <span class="kalk-step-label">osoby</span>
+                  </div>
+                </div>
+                <div class="kalk-field-group">
+                  <label class="kalk-label">Sportovní aktivity</label>
+                  <div class="kalk-pills" data-group="cestSport">
+                    <button class="kalk-pill active" data-val="zadne">Žádné</button>
+                    <button class="kalk-pill" data-val="rekreacni">Rekreační sport</button>
+                    <button class="kalk-pill" data-val="rizikovy">Rizikový sport</button>
+                  </div>
+                </div>
+              </div>
+              <div class="kalk-contact-col">
+                <h4 style="font-size:1rem;font-weight:800;margin-bottom:4px;">Kam poslat kalkulaci?</h4>
+                <p style="font-size:.82rem;color:var(--text-400);margin-bottom:16px;">Orientační cenu vám zašleme na e-mail zdarma.</p>
+                <div class="kalk-contact-fields">
+                  <input type="text" class="kalk-input kalk-f-jmeno" placeholder="Celé jméno" />
+                  <input type="email" class="kalk-input kalk-f-email" placeholder="E-mailová adresa" />
+                  <input type="tel" class="kalk-input kalk-f-telefon" placeholder="Telefon (+420)" />
+                  <button class="btn btn-primary btn-full btn-glow kalk-odeslat">Nezávazně spočítat cenu →</button>
+                  <p class="form-gdpr">Odesláním souhlasíte se <a href="#">zpracováním osobních údajů</a>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== SUCCESS ===== -->
+          <div class="kalk-success-state hidden" id="kalkSuccess">
+            <div class="kalk-success-icon">✓</div>
+            <h3 class="kalk-success-title">Kalkulace odeslána!</h3>
+            <p class="kalk-success-sub">Orientační cenu jsme zaslali na váš e-mail. Ozvu se vám osobně do 24 hodin.</p>
+            <div class="kalk-price-result" id="kalkPriceResult"></div>
+            <p class="kalk-price-note">* Orientační cena. Přesná nabídka závisí na konkrétních parametrech pojistky.</p>
+            <button class="btn btn-outline kalk-reset-btn" id="kalkReset">← Nová kalkulace</button>
+          </div>
+
+        </div><!-- /kalk-body -->
+      </div><!-- /kalk-card -->
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq-inner">
+        <div class="faq-left reveal">
+          <p class="section-tag">FAQ</p>
+          <h2>Časté<br />dotazy</h2>
+          <p>Máte otázky? Odpovídám na ty nejčastější. Pokud nenajdete odpověď, neváhejte mě kontaktovat.</p>
+          <a href="#kontakt" class="btn btn-primary" style="margin-top:24px">Zeptat se přímo →</a>
+        </div>
+        <div class="faq-right">
+          <div class="faq-list">
+            <div class="faq-item reveal">
+              <button class="faq-q">Kolik stojí vaše služby? <span class="faq-arrow">▼</span></button>
+              <div class="faq-a"><p>Moje služby jsou pro klienty <strong>zcela zdarma</strong>. Jsem odměňován přímo pojišťovnami za zprostředkování, takže vás to nestojí ani korunu navíc.</p></div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-q">Jak dlouho trvá srovnání? <span class="faq-arrow">▼</span></button>
+              <div class="faq-a"><p>Obvykle se ozvu do <strong>24 hodin</strong> s kompletním srovnáním nabídek. Složitější případy (hypotéka, životní pojištění) mohou trvat o den déle.</p></div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-q">Musím někam chodit nebo podepisovat papíry? <span class="faq-arrow">▼</span></button>
+              <div class="faq-a"><p>Ne. Celý proces probíhá <strong>100% online</strong>. Smlouvy podepisujeme elektronicky, vše vyřídíme přes telefon, e-mail nebo video hovor.</p></div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-q">Budete mi po kontaktování neustále volat? <span class="faq-arrow">▼</span></button>
+              <div class="faq-a"><p>Rozhodně ne. Ozvu se jednou, představím nabídku a pak je na vás. Žádný nátlak, žádné otravné telefonáty.</p></div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-q">Se kterými pojišťovnami spolupracujete? <span class="faq-arrow">▼</span></button>
+              <div class="faq-a"><p>Spolupracuji se <strong>všemi hlavními pojišťovnami</strong> na českém trhu – Allianz, Česká pojišťovna, Kooperativa, Generali, ČSOB Pojišťovna, Uniqa, Slavia a dalšími.</p></div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-q">Pomůžete mi i při škodní události? <span class="faq-arrow">▼</span></button>
+              <div class="faq-a"><p>Ano. Moji klienti mají mé číslo a kdykoliv mohou zavolat. Pomohu s nahlášením škody, komunikací s pojišťovnou i vyřízením pojistného plnění.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="kontakt" id="kontakt">
+    <div class="kontakt-bg">
+      <div class="kontakt-orb kontakt-orb--1"></div>
+      <div class="kontakt-orb kontakt-orb--2"></div>
+    </div>
+    <div class="container">
+      <div class="kontakt-inner">
+        <div class="kontakt-left reveal">
+          <p class="section-tag">Kontakt</p>
+          <h2>Pojďme se<br />domluvit</h2>
+          <p class="section-sub">Napište mi nebo zavolejte. Rád se vám věnuji osobně a bezplatně.</p>
+          <div class="kontakt-info">
+            <a href="tel:+420000000000" class="kontakt-item">
+              <div class="kontakt-icon-wrap">📞</div>
+              <div>
+                <span class="ki-label">Telefon</span>
+                <span class="ki-val">+420 XXX XXX XXX</span>
+              </div>
+            </a>
+            <a href="mailto:info@jakubsojka.cz" class="kontakt-item">
+              <div class="kontakt-icon-wrap">✉️</div>
+              <div>
+                <span class="ki-label">E-mail</span>
+                <span class="ki-val">info@jakubsojka.cz</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="kontakt-right reveal reveal--delay-1">
+          <div class="kontakt-form-card">
+            <h3>Nezávazná poptávka</h3>
+            <p>Odpovím do 24 hodin</p>
+            <form class="contact-form" id="kontaktForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Celé jméno</label>
+                  <input type="text" id="kontJmeno" placeholder="Jan Novák" required />
+                </div>
+                <div class="form-group">
+                  <label>Telefon</label>
+                  <input type="tel" id="kontTelefon" placeholder="+420 XXX XXX XXX" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" id="kontEmail" placeholder="jan@email.cz" required />
+              </div>
+              <div class="form-group">
+                <label>O co máte zájem?</label>
+                <select id="kontTyp">
+                  <option value="">Vyberte typ pojištění</option>
+                  <option value="auto">🚗 Pojištění vozidla</option>
+                  <option value="zivot">❤️ Životní pojištění</option>
+                  <option value="majetek">🏠 Pojištění majetku</option>
+                  <option value="hypoteka">🏦 Hypotéka</option>
+                  <option value="cestovni">✈️ Cestovní pojištění</option>
+                  <option value="jine">💬 Jiné</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Zpráva <span class="optional">(nepovinné)</span></label>
+                <textarea id="kontZprava" placeholder="Popište co potřebujete..." rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full btn-glow">Odeslat poptávku →</button>
+              <p class="form-gdpr">Odesláním souhlasíte se <a href="#">zpracováním osobních údajů</a>. Žádný spam.</p>
+            </form>
+            <div class="kontakt-success hidden" id="kontaktSuccess">
+              <div class="success-icon">✓</div>
+              <h3>Zpráva odeslána!</h3>
+              <p>Ozvu se vám co nejdříve.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="logo footer-logo">Jakub <span>Sojka</span></div>
+        <p>Nezávislý pojišťovací makléř<br />a finanční poradce</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Služby</h4>
+        <ul>
+          <li><a href="#sluzby">Pojištění vozidla</a></li>
+          <li><a href="#sluzby">Životní pojištění</a></li>
+          <li><a href="#sluzby">Pojištění majetku</a></li>
+          <li><a href="#hypoteka">Hypotéky</a></li>
+          <li><a href="#sluzby">Cestovní pojištění</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Navigace</h4>
+        <ul>
+          <li><a href="#o-mne">O mně</a></li>
+          <li><a href="#recenze">Reference</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+420000000000">+420 XXX XXX XXX</a></li>
+          <li><a href="mailto:info@jakubsojka.cz">info@jakubsojka.cz</a></li>
+        </ul>
+        <div class="footer-rating">
+          <div class="fr-stars">★★★★★</div>
+          <div class="fr-text">5.0 · Google recenze</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 Jakub Sojka. Všechna práva vyhrazena.</span>
+        <a href="#">Zásady ochrany osobních údajů</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/supabase.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
