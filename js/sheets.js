@@ -3,7 +3,7 @@
 // Po nasazení Apps Scriptu vlož sem URL web appu
 // =============================================
 
-const SHEETS_URL = 'DOPLNIT_APPS_SCRIPT_URL';
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxf1k2pqDKIFO5e8WAcyIPgsrVw4WMx3-aNx8t27MKLLmDZ4bnh7hko5b9MBYqPkMz6qg/exec';
 
 // Odeslání leadu do Google Sheets přes Apps Script
 async function saveLead(data) {
