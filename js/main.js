@@ -454,18 +454,14 @@ function initKalkSection() {
       // Calculate price
       const price = calcPrice(service, osoby);
 
-      // Supabase
-      try {
-        if (typeof supabase !== 'undefined') {
-          await supabase.from('poptavky').insert([{
-            jmeno, email, telefon,
-            typ: service,
-            cena_od: price.od,
-            cena_do: price.do,
-            zdroj: 'kalkulace-sekce'
-          }]);
-        }
-      } catch (e) { console.warn('Supabase:', e); }
+      // Google Sheets
+      await saveLead({
+        jmeno, email, telefon,
+        typ: service,
+        cena_od: price.od,
+        cena_do: price.do,
+        zdroj: 'kalkulace-sekce'
+      });
 
       // Show success
       document.querySelectorAll('.kalk-pane').forEach(p => p.classList.remove('active'));
