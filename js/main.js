@@ -346,6 +346,8 @@ function initKalkSection() {
       document.querySelectorAll('.kalk-tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.kalk-pane').forEach(p => p.classList.remove('active'));
       tab.classList.add('active');
+      const activeLabel = document.getElementById('kalkActiveLabel');
+      if (activeLabel) activeLabel.textContent = tab.querySelector('.kalk-tab-label')?.textContent || '';
       const pane = document.getElementById('kpane-' + tab.dataset.pane);
       if (pane) pane.classList.add('active');
       const success = document.getElementById('kalkSuccess');

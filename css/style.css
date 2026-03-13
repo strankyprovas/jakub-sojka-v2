@@ -1042,6 +1042,27 @@ section { padding: 100px 0; }
   .kalk-select { max-width: 100%; }
   .kalk-spz-plate { max-width: 100%; }
 }
+.kalk-active-label {
+  display: none;
+}
+@media (max-width: 480px) {
+  .kalk-tabs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    overflow-x: visible;
+  }
+  .kalk-tab { min-width: 0; padding: 12px 4px; }
+  .kalk-tab-label { display: none; }
+  .kalk-tab-icon { font-size: 1.4rem; }
+  .kalk-active-label {
+    display: block;
+    text-align: center;
+    font-size: .85rem;
+    font-weight: 700;
+    color: #0284c7;
+    padding: 8px 0 0;
+  }
+}
 
 /* ======================== FAQ ======================== */
 .faq { background: var(--white); }
