@@ -12,16 +12,13 @@ async function saveLead(data) {
     return false;
   }
   try {
-    const response = await fetch(SHEETS_URL, {
+    // Apps Script vyžaduje no-cors kvůli přesměrování – odpověď je opaque, ale data se uloží
+    await fetch(SHEETS_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain' }, // CORS workaround pro Apps Script
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(data)
     });
-    const result = await response.json();
-    if (result.status !== 'ok') {
-      console.error('Sheets error:', result);
-      return false;
-    }
     return true;
   } catch (e) {
     console.error('Network error:', e);
