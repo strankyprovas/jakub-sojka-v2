@@ -1034,13 +1034,15 @@ section { padding: 100px 0; }
 @media (max-width: 900px) {
   .kalk-grid { grid-template-columns: 1fr; gap: 28px; }
   .kalk-contact-col { position: static; }
-  .kalk-body { padding: 28px 28px; }
-  .kalk-range, .kalk-range-limits { max-width: 100%; }
-  .kalk-select { max-width: 100%; }
+  .kalk-body { padding: 28px; }
+  .kalk-range { max-width: 100%; width: 100%; }
+  .kalk-range-limits { max-width: 100%; width: 100%; }
+  .kalk-select { max-width: 100%; width: 100%; }
   .kalk-spz-plate { max-width: 100%; display: flex; }
   .kalk-spz-input { width: 100%; }
   .kalk-input { width: 100%; }
   .kalk-input--narrow { max-width: 100%; }
+  .kalk-pill { white-space: normal; text-align: center; }
 }
 
 @media (max-width: 640px) {
@@ -1066,7 +1068,9 @@ section { padding: 100px 0; }
   .kalk-pill { padding: 6px 10px; font-size: .78rem; }
   .kalk-checkboxes { gap: 6px; }
   .kalk-check { font-size: .8rem; padding: 5px 10px; }
-  .kalk-price-result { padding: 16px; }
+  .kalk-price-result { padding: 16px; max-width: 100%; }
+  .kalk-price-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .kalk-label { font-size: .78rem; }
 }
 
 /* ======================== FAQ ======================== */
