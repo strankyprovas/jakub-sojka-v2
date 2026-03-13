@@ -1045,14 +1045,14 @@ section { padding: 100px 0; }
 .kalk-active-label {
   display: none;
 }
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .kalk-tabs {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     overflow-x: visible;
   }
   .kalk-tab { min-width: 0; padding: 12px 4px; }
-  .kalk-tab-label { display: none; }
+  .kalk-tab-label { display: none !important; }
   .kalk-tab-icon { font-size: 1.4rem; }
   .kalk-active-label {
     display: block;
