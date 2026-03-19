@@ -184,7 +184,7 @@ section { padding: 100px 0; }
 .nav-inner { display: flex; align-items: center; gap: 24px; height: 70px; }
 
 .logo { font-size: 1.3rem; font-weight: 800; color: var(--text-900); flex-shrink: 0; letter-spacing: -.02em; }
-.logo span { color: var(--blue-600); }
+.logo span { color: inherit; }
 
 .nav-links { display: flex; gap: 2px; flex: 1; }
 .nav-links a {
@@ -206,21 +206,12 @@ section { padding: 100px 0; }
   position: relative; min-height: 100vh;
   display: flex; flex-direction: column;
   padding-top: 70px; overflow: hidden;
-}
-
-.hero-bg-image {
-  display: none;
+  background: linear-gradient(135deg, #0d0a2e 0%, #1a1060 30%, #1e2fa0 65%, #2d7dd2 100%);
 }
 
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(
-    140deg,
-    #0369a1 0%,
-    #0284c7 35%,
-    #0ea5e9 65%,
-    #0369a1 100%
-  );
+  background: linear-gradient(135deg, #0d0a2e 0%, #1a1060 30%, #1e2fa0 65%, #2d7dd2 100%);
 }
 
 .hero-orb {
@@ -251,10 +242,7 @@ section { padding: 100px 0; }
 }
 
 .hero-grid-pattern {
-  position: absolute; inset: 0; z-index: 2; opacity: .06;
-  background-image: linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px);
-  background-size: 60px 60px;
+  display: none;
 }
 
 .hero-inner {
@@ -341,35 +329,48 @@ section { padding: 100px 0; }
 
 .spz-card-header { margin-bottom: 24px; }
 .spz-card-header h3 { font-size: 1.3rem; font-weight: 800; color: var(--text-900); }
-.spz-card-header p { font-size: .88rem; color: var(--text-400); margin-top: 4px; }
-
-.spz-tabs {
-  display: flex; gap: 4px; background: var(--gray-100);
-  border-radius: var(--r-md); padding: 4px; margin-bottom: 24px;
+.spz-stat-label {
+  font-size: .88rem; font-weight: 700; margin-top: 6px;
+  color: #ef4444; background: rgba(239,68,68,.08);
+  display: inline-block; padding: 4px 10px; border-radius: 100px;
+  border: 1px solid rgba(239,68,68,.2);
 }
-.spz-tab {
-  flex: 1; padding: 10px 8px; border: none; background: none;
-  border-radius: var(--r-sm); font-size: .85rem; font-weight: 600;
-  color: var(--text-500); cursor: pointer; transition: all var(--t);
-}
-.spz-tab.active { background: var(--white); color: var(--blue-600); box-shadow: var(--sh-sm); }
 
 .spz-label { font-size: .88rem; color: var(--text-500); font-weight: 500; margin-bottom: 12px; }
 
+/* SPZ plate – jako CZ registrační značka */
+.spz-input-wrap { margin-bottom: 12px; }
+
 .spz-plate {
-  display: flex; align-items: center; gap: 12px;
-  background: var(--white); border: 2px solid var(--blue-200);
-  border-radius: var(--r-md); padding: 4px 16px; margin-bottom: 12px;
-  transition: border-color var(--t); box-shadow: 0 2px 8px rgba(37,99,235,.08);
+  display: flex; align-items: stretch;
+  height: 80px; border-radius: 8px; border: 3px solid #1d3a8a;
+  overflow: hidden; box-shadow: 0 4px 16px rgba(29,58,138,.25);
+  transition: border-color var(--t), box-shadow var(--t);
 }
-.spz-plate:focus-within { border-color: var(--blue-500); box-shadow: 0 0 0 4px rgba(37,99,235,.12); }
-.plate-flag { font-size: 1.5rem; }
-.spz-plate input {
-  border: none; outline: none; font-size: 1.6rem; font-weight: 800;
-  letter-spacing: .12em; width: 100%; color: var(--text-900);
-  text-transform: uppercase; padding: 12px 0; background: transparent;
+.spz-plate:focus-within { border-color: #1d4ed8; box-shadow: 0 0 0 4px rgba(29,58,138,.2); }
+
+.plate-eu {
+  background: #003399; width: 62px; flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; padding: 6px 4px;
 }
-.spz-plate input::placeholder { color: var(--text-300); font-weight: 400; font-size: 1rem; letter-spacing: 0; }
+.plate-stars {
+  font-size: .6rem; color: #FFD700; letter-spacing: 1px;
+  line-height: 1; text-align: center; display: flex; gap: 1px;
+  flex-wrap: wrap; justify-content: center; max-width: 46px;
+}
+.plate-cz {
+  font-size: 1rem; font-weight: 900; color: #fff;
+  letter-spacing: .05em; line-height: 1;
+}
+.plate-input {
+  flex: 1; border: none; outline: none;
+  background: #fff; font-size: 2rem; font-weight: 900;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: #111; padding: 0 16px;
+  font-family: 'Inter', sans-serif;
+}
+.plate-input::placeholder { color: #ccc; font-weight: 400; font-size: 1.2rem; letter-spacing: 2px; }
 
 .spz-hint {
   font-size: .78rem; color: var(--text-300); text-align: center; margin-top: 8px;
@@ -393,8 +394,9 @@ section { padding: 100px 0; }
 .partners-bar-inner { display: flex; align-items: center; gap: 28px; }
 .partners-label { font-size: .78rem; color: rgba(255,255,255,.5); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; flex-shrink: 0; }
 .partners-track { display: flex; overflow: hidden; flex: 1; mask: linear-gradient(to right, transparent, black 12%, black 88%, transparent); }
-.partners-slide { display: flex; gap: 40px; animation: slide 24s linear infinite; flex-shrink: 0; }
-.partner-logo { font-size: .82rem; font-weight: 700; color: rgba(255,255,255,.45); white-space: nowrap; }
+.partners-slide { display: flex; gap: 40px; animation: slide 24s linear infinite; flex-shrink: 0; align-items: center; }
+.partner-logo-wrap { display: flex; align-items: center; flex-shrink: 0; }
+.partner-logo-wrap img { height: 36px; width: auto; max-width: 120px; object-fit: contain; filter: grayscale(100%) brightness(200%); }
 
 @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
@@ -423,7 +425,7 @@ section { padding: 100px 0; }
 .stat-label { font-size: .88rem; color: var(--text-400); margin-top: 6px; font-weight: 500; }
 
 /* ======================== JAK TO FUNGUJE ======================== */
-.how-it-works { background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%); }
+.how-it-works { background: linear-gradient(145deg, #e0f2fe 0%, #bae6fd 40%, #e0f9ff 70%, #f0f9ff 100%); }
 
 .steps-grid {
   display: flex; align-items: stretch; gap: 0;
@@ -472,7 +474,7 @@ section { padding: 100px 0; }
 /* ======================== SLUŽBY ======================== */
 .sluzby {
   position: relative; overflow: hidden;
-  background: linear-gradient(145deg, #e0f2fe 0%, #bae6fd 40%, #e0f9ff 70%, #f0f9ff 100%);
+  background: var(--white);
   padding: 100px 0;
 }
 .sluzby-bg { position: absolute; inset: 0; pointer-events: none; }
@@ -512,6 +514,7 @@ section { padding: 100px 0; }
 .service-card--property .service-card-bg { background: linear-gradient(145deg, rgba(209,250,229,.6), rgba(167,243,208,.3)); }
 .service-card--travel .service-card-bg { background: linear-gradient(145deg, rgba(237,233,254,.6), rgba(221,214,254,.3)); }
 .service-card--mortgage .service-card-bg { background: linear-gradient(145deg, rgba(254,243,199,.6), rgba(253,230,138,.3)); }
+.service-card--invest .service-card-bg { background: linear-gradient(145deg, rgba(209,250,229,.6), rgba(167,243,208,.3)); }
 
 /* Tečkový pattern na kartách */
 .service-card::before {
@@ -581,7 +584,7 @@ section { padding: 100px 0; }
 }
 .photo-badge span { font-size: 1.8rem; }
 .photo-badge strong { display: block; font-size: .88rem; font-weight: 700; color: var(--text-900); }
-.photo-badge span:last-child { font-size: .78rem; color: var(--text-400); }
+.photo-badge div span { font-size: .78rem; color: var(--text-400); }
 
 .experience-card {
   position: absolute; top: 30px; left: -28px; z-index: 2;
@@ -1165,6 +1168,38 @@ section { padding: 100px 0; }
 .kontakt-form-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 4px; }
 .kontakt-form-card > p { font-size: .88rem; color: var(--text-400); margin-bottom: 24px; }
 
+/* Kontakt CTA box (místo formuláře) */
+.kontakt-cta-box {
+  background: var(--white); border-radius: var(--r-2xl);
+  padding: 48px 36px; box-shadow: 0 30px 80px rgba(0,0,0,.3);
+  text-align: center;
+}
+.kontakt-cta-icon { font-size: 3rem; margin-bottom: 16px; }
+.kontakt-cta-box h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; color: var(--text-900); }
+.kontakt-cta-box p { font-size: .95rem; color: var(--text-500); line-height: 1.7; }
+
+/* ======================== MODAL ======================== */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; backdrop-filter: blur(4px);
+}
+.modal-overlay.hidden { display: none; }
+.modal-box {
+  background: #fff; border-radius: 20px; padding: 40px;
+  width: 100%; max-width: 540px; max-height: 90vh; overflow-y: auto;
+  position: relative; box-shadow: 0 24px 80px rgba(0,0,0,.3);
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: var(--gray-100); border: none; width: 36px; height: 36px;
+  border-radius: 50%; cursor: pointer; font-size: 1rem; color: var(--text-500);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-close:hover { background: var(--gray-200); }
+.modal-box h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 4px; }
+.modal-box > p { color: var(--text-400); margin-bottom: 24px; font-size: .9rem; }
+
 .contact-form { display: flex; flex-direction: column; gap: 14px; }
 .form-group { display: flex; flex-direction: column; gap: 6px; }
 .form-group label { font-size: .82rem; font-weight: 600; color: var(--text-700); }
@@ -1231,7 +1266,7 @@ section { padding: 100px 0; }
 
 .footer-brand p { color: rgba(255,255,255,.45); font-size: .88rem; margin-top: 12px; line-height: 1.75; }
 .footer-logo { font-size: 1.25rem; font-weight: 800; margin-bottom: 4px; }
-.footer-logo span { color: var(--sky); }
+.footer-logo span { color: inherit; }
 
 .footer-social { display: flex; gap: 10px; margin-top: 20px; }
 .footer-social a {
@@ -1318,4 +1353,25 @@ section { padding: 100px 0; }
   .stats-grid { grid-template-columns: 1fr; }
   .hero-badges { flex-direction: column; }
   .o-mne-btns { flex-direction: column; }
+}
+
+@media (max-width: 390px) {
+  .container { padding: 0 14px; }
+  .glass-card { padding: 20px 16px; }
+  .hero-inner { padding: 24px 14px 40px; gap: 28px; }
+  .hero-text h1 { font-size: 1.9rem; }
+  .hero-badges { gap: 6px; }
+  .hero-badge-item { font-size: .78rem; padding: 6px 12px; }
+  .plate-input { font-size: 1.5rem; letter-spacing: 2px; padding: 0 10px; }
+  .plate-eu { width: 50px; }
+  .plate-cz { font-size: .85rem; }
+  .plate-stars { font-size: .28rem; max-width: 38px; }
+  .spz-plate { height: 68px; }
+  .float-card { padding: 10px 14px; }
+  .fc-val { font-size: .95rem; }
+  .spz-trust { gap: 10px; }
+  .trust-item { font-size: .7rem; }
+  .btn { padding: 12px 18px; font-size: .88rem; }
+  .btn-hero { padding: 15px 20px; font-size: .95rem; }
+  .partners-bar-inner { flex-direction: column; gap: 10px; }
 }
