@@ -20,7 +20,6 @@
         <li><a href="#sluzby">Služby</a></li>
         <li><a href="#o-mne">O mně</a></li>
         <li><a href="#recenze">Reference</a></li>
-        <li><a href="kalkulacky.html">Kalkulačky</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
       <a href="#" class="btn btn-primary nav-cta open-modal" id="navCta">Získat nabídku zdarma</a>
@@ -32,122 +31,139 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <!-- Dekorativní prvky pozadí -->
-    <div class="hero-overlay"></div>
     <div class="hero-orb hero-orb--1"></div>
     <div class="hero-orb hero-orb--2"></div>
-    <div class="hero-orb hero-orb--3"></div>
-    <div class="hero-grid-pattern"></div>
 
     <div class="container hero-inner">
+
+      <!-- LEFT: Text + SPZ form -->
       <div class="hero-text reveal">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          86 % lidí přeplácí na pojištění
+        </div>
         <h1>
           Ušetřete na pojištění<br />
           <span class="gradient-text">tisíce korun ročně.</span>
         </h1>
         <p class="hero-sub">
-          Porovnám nabídky od <strong>všech pojišťoven</strong> na trhu a najdu tu nejlepší přesně pro vás. Online, bez papírů, bez závazků.
+          Srovnám nabídky od <strong>všech pojišťoven</strong> a najdu tu nejlepší přesně pro vás. Zdarma, během pár minut.
         </p>
-        <div class="hero-badges">
-          <div class="hero-badge-item"><span class="hbi-icon">✓</span> Zcela zdarma</div>
-          <div class="hero-badge-item"><span class="hbi-icon">✓</span> Do 24 hodin</div>
-          <div class="hero-badge-item"><span class="hbi-icon">✓</span> Bez papírů</div>
-          <div class="hero-badge-item"><span class="hbi-icon">✓</span> 500+ spokojených klientů</div>
-        </div>
-        <!-- Floating úspora karty -->
-        <div class="float-cards">
-          <div class="float-card float-card--green">
-            <span class="fc-emoji">💰</span>
-            <div>
-              <div class="fc-val">−4 200 Kč</div>
-              <div class="fc-lab">Úspora / rok</div>
-            </div>
+        <!-- Mini stats -->
+        <div class="hero-mini-stats">
+          <div class="hms-item">
+            <div class="hms-val">2 400 Kč</div>
+            <div class="hms-lab">průměrná úspora</div>
           </div>
-          <div class="float-card float-card--blue">
-            <span class="fc-emoji">⭐</span>
-            <div>
-              <div class="fc-val">5.0 / 80+</div>
-              <div class="fc-lab">Google recenze</div>
-            </div>
+          <div class="hms-sep"></div>
+          <div class="hms-item">
+            <div class="hms-val">★ 5.0</div>
+            <div class="hms-lab">80+ Google recenzí</div>
+          </div>
+          <div class="hms-sep"></div>
+          <div class="hms-item">
+            <div class="hms-val">Zdarma</div>
+            <div class="hms-lab">vždy, bez závazků</div>
           </div>
         </div>
-      </div>
-
-      <!-- SPZ FORMULÁŘ -->
-      <div class="spz-card glass-card reveal reveal--delay" id="spz-formular">
-        <div class="spz-card-header">
-          <h3>Srovnejte povinné ručení</h3>
-          <p class="spz-stat-label">86% přeplácí na povinném ručení</p>
-        </div>
-
-        <div class="spz-content" id="tab-auto">
-          <p class="spz-label">Zadejte SPZ vozidla:</p>
-          <div class="spz-input-wrap">
-            <div class="spz-plate">
-              <div class="plate-eu">
-                <div class="plate-stars">★★★★★</div>
-                <div class="plate-cz">CZ</div>
+        <!-- SPZ form box -->
+        <div class="hero-spz-box" id="spz-formular">
+          <div class="spz-content" id="tab-auto">
+            <div class="spz-inline-row">
+              <div class="spz-plate">
+                <div class="plate-eu">
+                  <div class="plate-stars">★★★★★</div>
+                  <div class="plate-cz">CZ</div>
+                </div>
+                <input type="text" id="spzInput" placeholder="Zadejte SPZ" maxlength="8" autocomplete="off" class="plate-input" />
               </div>
-              <input type="text" id="spzInput" placeholder="1AB 2345" maxlength="8" autocomplete="off" class="plate-input" />
+              <button class="btn btn-hero spz-inline-btn" id="spzNext">
+                <span>Srovnat</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
             </div>
           </div>
-          <button class="btn btn-hero btn-full" id="spzNext">
-            <span>Srovnat pojištění</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
-          <p class="spz-hint">🔒 Vaše data jsou v bezpečí</p>
-        </div>
 
-        <div class="spz-form-expand hidden" id="spzFormExpand">
-          <div class="form-divider"><span>Vaše kontaktní údaje</span></div>
-          <div class="form-row">
-            <input type="text" id="spzJmeno" placeholder="Celé jméno" />
-            <input type="tel" id="spzTelefon" placeholder="Telefon (+420)" />
+          <div class="spz-form-expand hidden" id="spzFormExpand">
+            <div class="form-divider"><span>Vaše kontaktní údaje</span></div>
+            <div class="form-row">
+              <input type="text" id="spzJmeno" placeholder="Celé jméno" />
+              <input type="tel" id="spzTelefon" placeholder="Telefon (+420)" />
+            </div>
+            <input type="email" id="spzEmail" placeholder="E-mailová adresa" />
+            <p class="form-spz-display">SPZ: <strong id="spzValue"></strong></p>
+            <button class="btn btn-hero btn-full" id="spzSubmit">Odeslat a získat nabídku →</button>
+            <p class="form-gdpr">Odesláním souhlasíte se <a href="#">zpracováním osobních údajů</a>.</p>
           </div>
-          <input type="email" id="spzEmail" placeholder="E-mailová adresa" />
-          <p class="form-spz-display">SPZ: <strong id="spzValue"></strong></p>
-          <button class="btn btn-hero btn-full" id="spzSubmit">Odeslat a získat nabídku →</button>
-          <p class="form-gdpr">Odesláním souhlasíte se <a href="#">zpracováním osobních údajů</a>.</p>
-        </div>
 
-        <div class="spz-success hidden" id="spzSuccess">
-          <div class="success-icon">✓</div>
-          <h3>Poptávka odeslána!</h3>
-          <p>Ozvu se vám do 24 hodin s nejlepší nabídkou.</p>
-        </div>
-
-        <div class="spz-trust">
-          <div class="trust-item">🏆 <span>80+ recenzí</span></div>
-          <div class="trust-item">🔐 <span>GDPR</span></div>
-          <div class="trust-item">⚡ <span>24h odpověď</span></div>
+          <div class="spz-success hidden" id="spzSuccess">
+            <div class="success-icon">✓</div>
+            <h3>Poptávka odeslána!</h3>
+            <p>Ozvu se vám do 24 hodin s nejlepší nabídkou.</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Partneři -->
-    <div class="partners-bar">
-      <div class="container partners-bar-inner">
-        <p class="partners-label">Srovnávám nabídky od:</p>
-        <div class="partners-track">
-          <div class="partners-slide">
-            <div class="partner-logo-wrap"><img src="img/logos/allianz.png" alt="Allianz" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/ceska-pojistovna.png" alt="Česká pojišťovna" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/kooperativa.png" alt="Kooperativa" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/generali.png" alt="Generali" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/csob.svg" alt="ČSOB Pojišťovna" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/uniqa.svg" alt="Uniqa" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/slavia.svg" alt="Slavia" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/direct.png" alt="Direct" /></div>
+      <!-- RIGHT: Car image + badges -->
+      <div class="hero-car-wrap reveal reveal--delay">
+        <img src="img/passat.png" alt="Červený VW Passat – pojištění vozidla" class="hero-car-img" />
+        <div class="hero-car-badges">
+          <div class="hcb-item">
+            <div class="hcb-icon">🔍</div>
+            <div>
+              <div class="hcb-val">Online srovnání</div>
+              <div class="hcb-lab">10 pojišťoven</div>
+            </div>
           </div>
-          <div class="partners-slide" aria-hidden="true">
-            <div class="partner-logo-wrap"><img src="img/logos/allianz.png" alt="Allianz" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/ceska-pojistovna.png" alt="Česká pojišťovna" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/kooperativa.png" alt="Kooperativa" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/generali.png" alt="Generali" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/csob.svg" alt="ČSOB Pojišťovna" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/uniqa.svg" alt="Uniqa" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/slavia.svg" alt="Slavia" /></div>
-            <div class="partner-logo-wrap"><img src="img/logos/direct.png" alt="Direct" /></div>
+          <div class="hcb-item">
+            <div class="hcb-icon">💰</div>
+            <div>
+              <div class="hcb-val">Ušetřete až 70 %</div>
+              <div class="hcb-lab">na pojištění</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Wave divider -->
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 72" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,72 L0,72 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- LOGA POJIŠŤOVEN -->
+  <section class="logos-section">
+    <div class="container">
+      <p class="logos-label">Srovnávám nabídky od:</p>
+      <div class="logos-marquee-wrap">
+        <div class="logos-marquee-track">
+          <div class="logos-marquee-slide">
+            <div class="logos-strip-item"><img src="img/logos/allianz.svg" alt="Allianz" /></div>
+            <div class="logos-strip-item"><img src="img/logos/generali-cp.svg" alt="Generali ČP" /></div>
+            <div class="logos-strip-item"><img src="img/logos/kooperativa.svg" alt="Kooperativa" /></div>
+            <div class="logos-strip-item"><img src="img/logos/csob.svg" alt="ČSOB" /></div>
+            <div class="logos-strip-item"><img src="img/logos/cpp.svg" alt="ČPP" /></div>
+            <div class="logos-strip-item"><img src="img/logos/direct-pojistovna.svg" alt="Direct" /></div>
+            <div class="logos-strip-item"><img src="img/logos/slavia.svg" alt="Slavia" /></div>
+            <div class="logos-strip-item"><img src="img/logos/uniqa.svg" alt="Uniqa" /></div>
+            <div class="logos-strip-item"><img src="img/logos/pvzp.svg" alt="PVZP" /></div>
+            <div class="logos-strip-item"><img src="img/logos/pillow.svg" alt="Pillow" /></div>
+          </div>
+          <!-- duplikát pro nekonečnou smyčku -->
+          <div class="logos-marquee-slide" aria-hidden="true">
+            <div class="logos-strip-item"><img src="img/logos/allianz.svg" alt="" /></div>
+            <div class="logos-strip-item"><img src="img/logos/generali-cp.svg" alt="" /></div>
+            <div class="logos-strip-item"><img src="img/logos/kooperativa.svg" alt="" /></div>
+            <div class="logos-strip-item"><img src="img/logos/csob.svg" alt="" /></div>
+            <div class="logos-strip-item"><img src="img/logos/cpp.svg" alt="" /></div>
+            <div class="logos-strip-item"><img src="img/logos/direct-pojistovna.svg" alt="" /></div>
+            <div class="logos-strip-item"><img src="img/logos/slavia.svg" alt="" /></div>
+            <div class="logos-strip-item"><img src="img/logos/uniqa.svg" alt="" /></div>
+            <div class="logos-strip-item"><img src="img/logos/pvzp.svg" alt="" /></div>
+            <div class="logos-strip-item"><img src="img/logos/pillow.svg" alt="" /></div>
           </div>
         </div>
       </div>
@@ -193,7 +209,7 @@
             <li>Pojištění odpovědnosti</li>
             <li>Pojištění domácích mazlíčků</li>
           </ul>
-          <div class="service-savings">Průměrná úspora <strong>4 800 Kč/rok</strong></div>
+          <div class="service-savings">Průměrná úspora <strong>3 000 Kč/rok</strong></div>
           <a href="zivotni-pojisteni.html" class="btn btn-service">Srovnat nabídku →</a>
         </div>
 
@@ -253,7 +269,7 @@
             <li>Stavební spoření</li>
             <li>Penzijní připojištění</li>
           </ul>
-          <div class="service-savings">Průměrné zhodnocení <strong>6–9 % p.a.</strong></div>
+          <div class="service-savings">Zhodnocujte své <strong>úspory chytře</strong></div>
           <a href="investice.html" class="btn btn-service">Srovnat nabídku →</a>
         </div>
       </div>
@@ -332,8 +348,8 @@
       <div class="o-mne-text reveal reveal--delay-1">
         <p class="section-tag">O mně</p>
         <h2>Jsem Jakub Sojka,<br /><span class="gradient-text-blue">váš nezávislý poradce</span></h2>
-        <p>Pojišťovnictví a finančnímu poradenství se věnuji již více než 8 let. Mým cílem je vždy najít pro klienta to nejlepší řešení – takové, které bych doporučil vlastní rodině.</p>
-        <p>Jako <strong>nezávislý makléř</strong> nejsem vázán na žádnou pojišťovnu. Mohu skutečně objektivně porovnat celý trh a doporučit vám to, co je pro vás nejvýhodnější – ne to, co pojišťovně přináší největší zisk.</p>
+        <p>Mým cílem je vždy najít pro klienta to nejlepší řešení – takové, které bych doporučil vlastní rodině.</p>
+        <p>Nejsem vázán žádnou pojišťovnou nebo bankou.</p>
         <div class="feature-list">
           <div class="feature-item">
             <div class="feature-icon">🎯</div>
@@ -400,8 +416,7 @@
           </div>
         </div>
 
-        <div class="uspory-card uspory-card--featured reveal reveal--delay-1">
-          <div class="uspory-star">⭐ Největší úspora</div>
+        <div class="uspory-card reveal reveal--delay-1">
           <div class="uspory-header uspory-header--pink">
             <span class="uspory-emoji">❤️</span>
             <div>
@@ -482,7 +497,7 @@
 
       <div class="uspory-cta reveal">
         <p>Chcete také ušetřit? Srovnání je zcela zdarma.</p>
-        <a href="#spz-formular" class="btn btn-primary btn-lg btn-glow">Srovnat pojištění zdarma →</a>
+        <button class="btn btn-primary btn-lg btn-glow open-modal">Srovnat pojištění zdarma →</button>
       </div>
     </div>
   </section>
@@ -503,7 +518,7 @@
             <strong>5.0</strong>
             <span>· 80+ recenzí na Google</span>
           </div>
-          <a href="#" class="g-link" id="googleReviewLink" target="_blank" rel="noopener">
+          <a href="https://www.google.com/search?q=Jakub+Sojka+pojistovaci+makler+recenze" class="g-link" id="googleReviewLink" target="_blank" rel="noopener">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
             Zobrazit na Google
           </a>
@@ -513,86 +528,66 @@
       <div class="reviews-grid" id="reviewsGrid">
         <div class="review-card reveal">
           <div class="review-top">
-            <div class="review-avatar" style="--av-color: #3b82f6">JN</div>
+            <div class="review-avatar" style="--av-color: #3b82f6">PV</div>
             <div class="review-meta">
-              <div class="review-name">Jana Nováková</div>
+              <div class="review-name">Pepa Václav</div>
               <div class="review-stars">★★★★★</div>
-              <div class="review-date">Před 2 týdny</div>
             </div>
             <div class="google-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
             </div>
           </div>
-          <p class="review-text">"Jakub mi ušetřil přes 4 000 Kč ročně na povinném ručení. Vše vyřídil rychle a online, nemusela jsem nikam chodit. Moc děkuji!"</p>
+          <p class="review-text">"S Jakubem mám velmi dobrou zkušenost. Vše mi srozumitelně vysvětlil a pomohl nastavit všechno tak, aby to dávalo smysl. Oceňuji jeho přístup bez nátlaku a rychlou komunikaci. Určitě doporučuji. 🫡"</p>
         </div>
 
         <div class="review-card reveal reveal--delay-1">
           <div class="review-top">
-            <div class="review-avatar" style="--av-color: #8b5cf6">MP</div>
+            <div class="review-avatar" style="--av-color: #8b5cf6">PJ</div>
             <div class="review-meta">
-              <div class="review-name">Martin Procházka</div>
+              <div class="review-name">Petra Juricova</div>
               <div class="review-stars">★★★★★</div>
-              <div class="review-date">Před měsícem</div>
             </div>
             <div class="google-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
             </div>
           </div>
-          <p class="review-text">"Srovnal mi životní pojištění a ušetřil skoro 6 000 Kč. Byl velmi profesionální a trpělivě mi vše vysvětlil. Jednoznačně doporučuji."</p>
+          <p class="review-text">"Mám kvalitnější pojištění a dokonce za nižší cenu než předtím. Všechno vyřízené online během chvilky. Všem určitě doporučuji ✌🏻"</p>
         </div>
 
         <div class="review-card reveal reveal--delay-2">
           <div class="review-top">
-            <div class="review-avatar" style="--av-color: #10b981">LK</div>
+            <div class="review-avatar" style="--av-color: #10b981">FS</div>
             <div class="review-meta">
-              <div class="review-name">Lucie Kováčová</div>
+              <div class="review-name">František Svoboda</div>
               <div class="review-stars">★★★★★</div>
-              <div class="review-date">Před 3 týdny</div>
             </div>
             <div class="google-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
             </div>
           </div>
-          <p class="review-text">"Konečně někdo, kdo to myslí s klientem vážně. Porovnal pojišťovny a vysvětlil rozdíly. Teď mám lepší pojistku za méně peněz."</p>
+          <p class="review-text">"Jakub mi ušetřil přes 4 500 Kč ročně na povinném ručení. Vše vyřídil rychle a online, nemusel jsem nikam chodit. Moc děkuji 😁"</p>
         </div>
 
         <div class="review-card reveal">
           <div class="review-top">
-            <div class="review-avatar" style="--av-color: #f59e0b">PH</div>
+            <div class="review-avatar" style="--av-color: #f59e0b">AP</div>
             <div class="review-meta">
-              <div class="review-name">Pavel Horák</div>
+              <div class="review-name">Aleš Peterka</div>
               <div class="review-stars">★★★★★</div>
-              <div class="review-date">Před 2 měsíci</div>
             </div>
             <div class="google-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
             </div>
           </div>
-          <p class="review-text">"Pomohl mi s hypotékou i pojišťovnou. Ušetřil jsem peníze na obou frontech. Komunikace na jedničku, rychlé a profesionální."</p>
+          <p class="review-text">"Rychlé srovnání všech nabídek. Vyřízené online během 30 minut :)"</p>
         </div>
 
         <div class="review-card reveal reveal--delay-1">
           <div class="review-top">
-            <div class="review-avatar" style="--av-color: #ef4444">SK</div>
+            <div class="review-avatar" style="--av-color: #ef4444">JZ</div>
             <div class="review-meta">
-              <div class="review-name">Simona Kopecká</div>
+              <div class="review-name">Jiri Zufan</div>
               <div class="review-stars">★★★★★</div>
-              <div class="review-date">Před týdnem</div>
-            </div>
-            <div class="google-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
-            </div>
-          </div>
-          <p class="review-text">"Super přístup, vše rychle a bez starostí. Doporučila jsem ho celé rodině a všichni jsou spokojení. Profesionál na svém místě."</p>
-        </div>
-
-        <div class="review-card reveal reveal--delay-2">
-          <div class="review-top">
-            <div class="review-avatar" style="--av-color: #06b6d4">RV</div>
-            <div class="review-meta">
-              <div class="review-name">Radek Vlček</div>
-              <div class="review-stars">★★★★★</div>
-              <div class="review-date">Před 5 dny</div>
             </div>
             <div class="google-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
@@ -600,10 +595,38 @@
           </div>
           <p class="review-text">"Oslovil jsem Jakuba na doporučení. Ušetřil mi na autě i domě přes 7 000 Kč ročně. Skvělá práce, víc jsem čekat nemohl!"</p>
         </div>
+
+        <div class="review-card reveal reveal--delay-2">
+          <div class="review-top">
+            <div class="review-avatar" style="--av-color: #06b6d4">MK</div>
+            <div class="review-meta">
+              <div class="review-name">Mara Kudrna</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <div class="google-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+            </div>
+          </div>
+          <p class="review-text">"Maximální spokojenost. Veľmi profesionální jednani. Vyřesli jsme společně investice a pojištění auta."</p>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-top">
+            <div class="review-avatar" style="--av-color: #8b5cf6">AD</div>
+            <div class="review-meta">
+              <div class="review-name">Adam Dvořák</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+            <div class="google-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+            </div>
+          </div>
+          <p class="review-text">"Profesionální přístup, rychlá komunikace a srozumitelné vysvětlení všech možností. Spolupráci s Jakubem Sojkou mohu doporučit. 👍🏻"</p>
+        </div>
       </div>
 
       <div class="reviews-cta reveal">
-        <a href="#" class="btn btn-white-outline" id="allReviewsBtn" target="_blank">
+        <a href="https://www.google.com/search?q=Jakub+Sojka+pojistovaci+makler+recenze" class="btn btn-white-outline" id="allReviewsBtn" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
           Zobrazit všechny recenze na Google
         </a>
@@ -726,7 +749,6 @@
         <ul>
           <li><a href="#o-mne">O mně</a></li>
           <li><a href="#recenze">Reference</a></li>
-          <li><a href="kalkulacky.html">Kalkulačky</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
         </ul>
@@ -780,6 +802,7 @@
             <option value="zivot">❤️ Životní pojištění</option>
             <option value="majetek">🏠 Pojištění majetku</option>
             <option value="hypoteka">🏦 Hypotéka</option>
+            <option value="uvery">💳 Spotřebitelský úvěr</option>
             <option value="cestovni">✈️ Cestovní pojištění</option>
             <option value="investice">📈 Investice</option>
             <option value="jine">💬 Jiné</option>
@@ -801,6 +824,7 @@
   </div>
 
   <script src="js/sheets.js"></script>
+  <script src="js/reviews.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

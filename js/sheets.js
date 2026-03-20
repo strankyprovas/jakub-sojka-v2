@@ -33,16 +33,15 @@ Vytvoř nový projekt, vlož tento kód a nasaď jako Web App:
   - Execute as: Me (matyas.vrbaa@gmail.com)
   - Who has access: Anyone
 
-const SPREADSHEET_ID = 'DOPLNIT_SPREADSHEET_ID'; // ID Google Sheetu
+const SPREADSHEET_ID = '1TP-wwoirV4mfYfmr2v2P5-2nIHo0SYaTPQ5ChtOpq5Q';
+const NOTIFY_EMAIL   = 'matyas.vrbaa@gmail.com'; // ← po otestování změnit na Jakubův mail
 
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
     const sheet = SpreadsheetApp.openById(SPREADSHEET_ID);
 
-    // Rozlišíme typ záznamu
     if (data.zdroj === 'kalkulace-sekce') {
-      // Poptávky z kalkulačky
       const tab = getOrCreateSheet(sheet, 'poptavky', [
         'Datum', 'Jméno', 'Email', 'Telefon', 'Typ', 'Cena od', 'Cena do', 'Zdroj'
       ]);
@@ -57,9 +56,8 @@ function doPost(e) {
         data.zdroj || ''
       ]);
     } else {
-      // Ostatní leads (SPZ, kontaktní formulář, hypotéka)
       const tab = getOrCreateSheet(sheet, 'leads', [
-        'Datum', 'Jméno', 'Email', 'Telefon', 'Typ', 'SPZ', 'Zpráva', 'Data kalkulačky'
+        'Datum', 'Jméno', 'Email', 'Telefon', 'Typ', 'SPZ', 'Zpráva', 'Data'
       ]);
       tab.appendRow([
         new Date(),
@@ -69,9 +67,12 @@ function doPost(e) {
         data.typ || '',
         data.spz || '',
         data.zprava || '',
-        data.kalkulacka_data ? JSON.stringify(data.kalkulacka_data) : ''
+        JSON.stringify(data)
       ]);
     }
+
+    // === EMAIL NOTIFIKACE ===
+    sendNotification(data);
 
     return ContentService
       .createTextOutput(JSON.stringify({ status: 'ok' }))
@@ -82,6 +83,32 @@ function doPost(e) {
       .createTextOutput(JSON.stringify({ status: 'error', message: err.message }))
       .setMimeType(ContentService.MimeType.JSON);
   }
+}
+
+function sendNotification(data) {
+  const typ = data.typ || data.zdroj || 'neznámý';
+  const jmeno = data.jmeno || '–';
+  const telefon = data.telefon || '–';
+  const email = data.email || '–';
+  const spz = data.spz ? '\nSPZ: ' + data.spz : '';
+  const zprava = data.zprava ? '\nZpráva: ' + data.zprava : '';
+
+  const subject = '🔔 Nová poptávka z webu – ' + jmeno;
+  const body =
+    'Nová poptávka z jakubsojka.cz\n' +
+    '─────────────────────────────\n' +
+    'Typ: ' + typ + '\n' +
+    'Jméno: ' + jmeno + '\n' +
+    'Telefon: ' + telefon + '\n' +
+    'Email: ' + email +
+    spz +
+    zprava + '\n' +
+    '─────────────────────────────\n' +
+    'Datum: ' + new Date().toLocaleString('cs-CZ') + '\n\n' +
+    'Zobrazit v Google Sheets:\n' +
+    'https://docs.google.com/spreadsheets/d/1TP-wwoirV4mfYfmr2v2P5-2nIHo0SYaTPQ5ChtOpq5Q/edit';
+
+  MailApp.sendEmail(NOTIFY_EMAIL, subject, body);
 }
 
 function getOrCreateSheet(spreadsheet, name, headers) {
@@ -95,7 +122,6 @@ function getOrCreateSheet(spreadsheet, name, headers) {
   return sheet;
 }
 
-// GET endpoint pro testování
 function doGet(e) {
   return ContentService
     .createTextOutput(JSON.stringify({ status: 'ok', message: 'Jakub Sojka – Sheets API běží' }))

@@ -244,88 +244,93 @@
   <!-- FORMULÁŘ -->
   <section class="svc-form-section">
     <div class="container svc-form-container">
-      <div class="svc-form-card" id="svcFormCard">
-        <form id="svcForm" onsubmit="return false;" style="display:contents">
-          <div class="svc-form-left">
-            <h2>Parametry vozidla a pojištění</h2>
+      <!-- KROK 1 -->
+      <div class="svc-form-card" id="step1Card">
+        <form id="step1Form" onsubmit="return false;">
+          <h2 style="font-size:1.2rem;font-weight:800;margin-bottom:6px;color:var(--text-900)">Srovnání pojištění vozidla</h2>
+          <p style="font-size:.85rem;color:var(--text-400);margin-bottom:24px;">Zadejte SPZ a kontakt – ozvu se s nejlepší nabídkou do 24 hodin.</p>
 
-            <div class="svc-field">
-              <label class="svc-label">SPZ vozidla</label>
-              <div class="svc-spz-plate">
-                <div class="svc-plate-eu">
-                  <div class="plate-stars">★★★★★</div>
-                  <div class="plate-cz">CZ</div>
-                </div>
-                <input type="text" id="fieldSpz" class="svc-plate-input" placeholder="1AB 2345" maxlength="8" autocomplete="off" />
+          <div class="svc-field">
+            <label class="svc-label">SPZ vozidla</label>
+            <div class="svc-spz-plate">
+              <div class="svc-plate-eu">
+                <div class="plate-stars">★★★★★</div>
+                <div class="plate-cz">CZ</div>
               </div>
+              <input type="text" id="fieldSpz" class="svc-plate-input" placeholder="1AB 2345" maxlength="8" autocomplete="off" />
             </div>
-
-            <div class="svc-field">
-              <label class="svc-label">Typ pojištění</label>
-              <div class="svc-pills" data-group="pojisteni">
-                <span class="svc-pill active" data-val="Povinné ručení">Povinné ručení</span>
-                <span class="svc-pill" data-val="Havarijní pojištění">Havarijní pojištění</span>
-                <span class="svc-pill" data-val="Obě varianty">Obě varianty</span>
-              </div>
-            </div>
-
-            <div class="svc-field">
-              <label class="svc-label">Rok výroby vozidla</label>
-              <select class="svc-select" id="fieldRokVyroby">
-                <option value="2020-2024">2020–2024</option>
-                <option value="2015-2019">2015–2019</option>
-                <option value="2010-2014">2010–2014</option>
-                <option value="2005-2009">2005–2009</option>
-                <option value="Starší">Starší</option>
-              </select>
-            </div>
-
-            <div class="svc-field">
-              <label class="svc-label">Věk hlavního řidiče</label>
-              <select class="svc-select" id="fieldVekRidice">
-                <option value="18-25">18–25 let</option>
-                <option value="26-35">26–35 let</option>
-                <option value="36-45">36–45 let</option>
-                <option value="46-55">46–55 let</option>
-                <option value="56+">56+ let</option>
-              </select>
-            </div>
-
-            <div class="svc-field">
-              <label class="svc-label">Aktuálně platíte: <span class="svc-range-val" id="displayCena">8 000 Kč/rok</span></label>
-              <input type="range" class="svc-range" id="fieldCena" min="1000" max="30000" value="8000" step="500" data-display="displayCena" />
-              <div class="svc-range-limits"><span>1 000 Kč</span><span>30 000 Kč</span></div>
-            </div>
-
-
-
-          </div><!-- /svc-form-left -->
-
-          <div class="svc-form-right">
-            <h2>Vaše kontaktní údaje</h2>
-            <div class="svc-field">
-              <label class="svc-label">Jméno a příjmení</label>
-              <input type="text" class="svc-input" id="fieldJmeno" placeholder="Jan Novák" required />
-            </div>
-            <div class="svc-field">
-              <label class="svc-label">Telefon</label>
-              <input type="tel" class="svc-input" id="fieldTelefon" placeholder="+420 XXX XXX XXX" required />
-            </div>
-            <div class="svc-field">
-              <label class="svc-label">E-mail</label>
-              <input type="email" class="svc-input" id="fieldEmail" placeholder="jan@email.cz" required />
-            </div>
-            <div class="svc-field">
-              <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:.82rem;color:var(--text-500);">
-                <input type="checkbox" id="fieldGdpr" required style="margin-top:2px;accent-color:var(--blue-600);width:16px;height:16px;flex-shrink:0;" />
-                <span>Souhlasím se <a href="#" style="color:var(--blue-500);">zpracováním osobních údajů</a>. Žádný spam.</span>
-              </label>
-            </div>
-            <button type="submit" class="svc-submit" id="svcSubmit">Nezávazně srovnat zdarma →</button>
-            <p class="svc-gdpr">🔒 Vaše údaje jsou v bezpečí. Používáme SSL šifrování.</p>
-          </div><!-- /svc-form-right -->
-
           </div>
+
+          <div class="svc-field">
+            <label class="svc-label">Jméno a příjmení</label>
+            <input type="text" class="svc-input" id="fieldJmeno" placeholder="Jan Novák" required />
+          </div>
+          <div class="svc-field">
+            <label class="svc-label">Telefon</label>
+            <input type="tel" class="svc-input" id="fieldTelefon" placeholder="+420 XXX XXX XXX" required />
+          </div>
+          <div class="svc-field">
+            <label class="svc-label">E-mail</label>
+            <input type="email" class="svc-input" id="fieldEmail" placeholder="jan@email.cz" required />
+          </div>
+          <div class="svc-field">
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:.82rem;color:var(--text-500);">
+              <input type="checkbox" id="fieldGdpr" required style="margin-top:2px;accent-color:var(--blue-600);width:16px;height:16px;flex-shrink:0;" />
+              <span>Souhlasím se <a href="#" style="color:var(--blue-500);">zpracováním osobních údajů</a>. Žádný spam.</span>
+            </label>
+          </div>
+          <button type="submit" class="svc-submit" id="step1Submit">Pokračovat →</button>
+          <p class="svc-gdpr">🔒 Vaše údaje jsou v bezpečí. Používáme SSL šifrování.</p>
+        </form>
+      </div>
+
+      <!-- KROK 2 -->
+      <div class="svc-form-card hidden" id="step2Card">
+        <form id="step2Form" onsubmit="return false;">
+          <h2 style="font-size:1.2rem;font-weight:800;margin-bottom:6px;color:var(--text-900)">Doplňující informace <span style="font-weight:400;color:var(--text-400);font-size:.9rem;">(nepovinné)</span></h2>
+          <p style="font-size:.85rem;color:var(--text-400);margin-bottom:24px;">Čím více víme, tím přesnější nabídku připravíme. Můžete také rovnou odeslat.</p>
+
+          <div class="svc-field">
+            <label class="svc-label">Typ pojištění</label>
+            <div class="svc-pills" data-group="pojisteni">
+              <span class="svc-pill active" data-val="Povinné ručení">Povinné ručení</span>
+              <span class="svc-pill" data-val="Havarijní pojištění">Havarijní pojištění</span>
+              <span class="svc-pill" data-val="Obě varianty">Obě varianty</span>
+            </div>
+          </div>
+
+          <div class="svc-field">
+            <label class="svc-label">Rok výroby vozidla</label>
+            <select class="svc-select" id="fieldRokVyroby">
+              <option value="">– nevyplněno –</option>
+              <option value="2020-2024">2020–2024</option>
+              <option value="2015-2019">2015–2019</option>
+              <option value="2010-2014">2010–2014</option>
+              <option value="2005-2009">2005–2009</option>
+              <option value="Starší">Starší</option>
+            </select>
+          </div>
+
+          <div class="svc-field">
+            <label class="svc-label">Věk hlavního řidiče</label>
+            <select class="svc-select" id="fieldVekRidice">
+              <option value="">– nevyplněno –</option>
+              <option value="18-25">18–25 let</option>
+              <option value="26-35">26–35 let</option>
+              <option value="36-45">36–45 let</option>
+              <option value="46-55">46–55 let</option>
+              <option value="56+">56+ let</option>
+            </select>
+          </div>
+
+          <div class="svc-field">
+            <label class="svc-label">Aktuálně platíte: <span class="svc-range-val" id="displayCena">8 000 Kč/rok</span></label>
+            <input type="range" class="svc-range" id="fieldCena" min="1000" max="30000" value="8000" step="500" data-display="displayCena" />
+            <div class="svc-range-limits"><span>1 000 Kč</span><span>30 000 Kč</span></div>
+          </div>
+
+          <button type="submit" class="svc-submit" id="step2Submit">Odeslat poptávku →</button>
+          <button type="button" id="skipStep2" style="width:100%;padding:12px;border:none;background:none;color:var(--text-400);font-size:.85rem;cursor:pointer;margin-top:8px;">Přeskočit a odeslat bez doplnění</button>
         </form>
       </div>
 
@@ -444,12 +449,26 @@
   <script src="js/sheets.js"></script>
   <script src="js/main.js"></script>
   <script>
-    function formatRangeVal(id, val) {
-      if (id === 'fieldCena') return Number(val).toLocaleString('cs-CZ') + ' Kč/rok';
-      return val;
+    let step1Data = {};
+
+    function collectAndSubmit(extra = {}) {
+      const pojisteniEl = document.querySelector('[data-group="pojisteni"] .svc-pill.active');
+      const data = {
+        ...step1Data,
+        pojisteni: pojisteniEl ? pojisteniEl.dataset.val : '',
+        rok_vyroby: document.getElementById('fieldRokVyroby')?.value || '',
+        vek_ridice: document.getElementById('fieldVekRidice')?.value || '',
+        aktualni_cena: document.getElementById('fieldCena')?.value || '',
+        ...extra
+      };
+      return saveLead(data);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      // SPZ uppercase
+      const spzInput = document.getElementById('fieldSpz');
+      if (spzInput) spzInput.addEventListener('input', () => { spzInput.value = spzInput.value.toUpperCase(); });
+
       // Pills
       document.querySelectorAll('.svc-pills').forEach(group => {
         group.querySelectorAll('.svc-pill').forEach(pill => {
@@ -460,60 +479,55 @@
         });
       });
 
-      // Range sliders
-      document.querySelectorAll('.svc-range').forEach(range => {
+      // Range slider
+      const cenaRange = document.getElementById('fieldCena');
+      if (cenaRange) {
         const updateRange = () => {
-          const min = +range.min, max = +range.max, val = +range.value;
+          const min = +cenaRange.min, max = +cenaRange.max, val = +cenaRange.value;
           const pct = ((val - min) / (max - min) * 100).toFixed(1);
-          range.style.setProperty('--pct', pct + '%');
-          const display = range.dataset.display;
-          if (display) {
-            const el = document.getElementById(display);
-            if (el) el.textContent = formatRangeVal(range.id, val);
-          }
+          cenaRange.style.setProperty('--pct', pct + '%');
+          const el = document.getElementById('displayCena');
+          if (el) el.textContent = Number(val).toLocaleString('cs-CZ') + ' Kč/rok';
         };
-        range.addEventListener('input', updateRange);
+        cenaRange.addEventListener('input', updateRange);
         updateRange();
+      }
+
+      // Krok 1 – přejít na krok 2
+      document.getElementById('step1Form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        step1Data = {
+          typ: 'pojisteni-vozidla',
+          spz: document.getElementById('fieldSpz').value,
+          jmeno: document.getElementById('fieldJmeno').value,
+          telefon: document.getElementById('fieldTelefon').value,
+          email: document.getElementById('fieldEmail').value,
+          zdroj: 'pojisteni-vozidla'
+        };
+        document.getElementById('step1Card').classList.add('hidden');
+        document.getElementById('step2Card').classList.remove('hidden');
       });
 
-      // SPZ uppercase
-      const spzInput = document.getElementById('fieldSpz');
-      if (spzInput) {
-        spzInput.addEventListener('input', () => {
-          spzInput.value = spzInput.value.toUpperCase();
-        });
-      }
+      // Krok 2 – odeslat s doplněním
+      document.getElementById('step2Form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('step2Submit');
+        btn.textContent = 'Odesílám...';
+        btn.disabled = true;
+        await collectAndSubmit();
+        document.getElementById('step2Card').style.display = 'none';
+        document.getElementById('svcSuccess').classList.remove('hidden');
+      });
 
-      // Submit
-      const form = document.getElementById('svcForm');
-      if (form) {
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const btn = document.getElementById('svcSubmit');
-          btn.textContent = 'Odesílám...';
-          btn.disabled = true;
-
-          const pojisteniEl = document.querySelector('[data-group="pojisteni"] .svc-pill.active');
-
-          const data = {
-            typ: 'pojisteni-vozidla',
-            spz: document.getElementById('fieldSpz').value,
-            pojisteni: pojisteniEl ? pojisteniEl.dataset.val : '',
-            rok_vyroby: document.getElementById('fieldRokVyroby').value,
-            vek_ridice: document.getElementById('fieldVekRidice').value,
-            aktualni_cena: document.getElementById('fieldCena').value,
-            jmeno: document.getElementById('fieldJmeno').value,
-            telefon: document.getElementById('fieldTelefon').value,
-            email: document.getElementById('fieldEmail').value,
-            zdroj: 'pojisteni-vozidla'
-          };
-
-          await saveLead(data);
-
-          document.getElementById('svcFormCard').style.display = 'none';
-          document.getElementById('svcSuccess').classList.remove('hidden');
-        });
-      }
+      // Přeskočit krok 2
+      document.getElementById('skipStep2').addEventListener('click', async () => {
+        const btn = document.getElementById('skipStep2');
+        btn.textContent = 'Odesílám...';
+        btn.disabled = true;
+        await collectAndSubmit();
+        document.getElementById('step2Card').style.display = 'none';
+        document.getElementById('svcSuccess').classList.remove('hidden');
+      });
     });
   </script>
 </body>

@@ -35,11 +35,10 @@
     .svc-hero p { font-size: 1.1rem; color: rgba(255,255,255,.75); max-width: 520px; margin: 0 auto; }
 
     .svc-form-section { padding: 64px 0 80px; background: var(--gray-50); }
-    .svc-form-container { max-width: 1100px; }
+    .svc-form-container { max-width: 640px; }
     .svc-form-card {
       background: #fff; border-radius: 24px; padding: 48px;
       box-shadow: 0 8px 40px rgba(0,0,0,.1);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
     }
     .svc-form-left h2 { font-size: 1.1rem; font-weight: 800; margin-bottom: 28px; color: var(--text-900); }
     .svc-form-right h2 { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; color: var(--text-900); }
@@ -199,65 +198,10 @@
   <section class="svc-form-section">
     <div class="container svc-form-container">
       <div class="svc-form-card" id="svcFormCard">
-        <form id="svcForm" onsubmit="return false;" style="display:contents">
-          <div class="svc-form-left">
-            <h2>Parametry pojištění</h2>
-
-            <div class="svc-field">
-              <label class="svc-label">Věk pojistníka: <span class="svc-range-val" id="displayVek">35 let</span></label>
-              <input type="range" class="svc-range" id="fieldVek" min="18" max="70" value="35" step="1" data-display="displayVek" />
-              <div class="svc-range-limits"><span>18 let</span><span>70 let</span></div>
-            </div>
-
-            <div class="svc-field">
-              <label class="svc-label">Pohlaví</label>
-              <div class="svc-pills" data-group="pohlavi">
-                <span class="svc-pill active" data-val="Muž">Muž</span>
-                <span class="svc-pill" data-val="Žena">Žena</span>
-              </div>
-            </div>
-
-            <div class="svc-field">
-              <label class="svc-label">Kouříte?</label>
-              <div class="svc-pills" data-group="koureni">
-                <span class="svc-pill active" data-val="Ne">Ne</span>
-                <span class="svc-pill" data-val="Ano">Ano</span>
-              </div>
-            </div>
-
-            <div class="svc-field">
-              <label class="svc-label">Co chcete pojistit?</label>
-              <div class="svc-checks">
-                <label class="svc-check-label">
-                  <input type="checkbox" value="Smrt" checked /> Smrt
-                </label>
-                <label class="svc-check-label">
-                  <input type="checkbox" value="Invalidita" /> Invalidita
-                </label>
-                <label class="svc-check-label">
-                  <input type="checkbox" value="Kritická nemoc" /> Kritická nemoc
-                </label>
-                <label class="svc-check-label">
-                  <input type="checkbox" value="Úraz" /> Úraz
-                </label>
-                <label class="svc-check-label" style="grid-column: span 2;">
-                  <input type="checkbox" value="Pracovní neschopnost" /> Pracovní neschopnost
-                </label>
-              </div>
-            </div>
-
-            <div class="svc-field">
-              <label class="svc-label">Měsíční rozpočet: <span class="svc-range-val" id="displayRozpocet">1 000 Kč/měs.</span></label>
-              <input type="range" class="svc-range" id="fieldRozpocet" min="300" max="5000" value="1000" step="50" data-display="displayRozpocet" />
-              <div class="svc-range-limits"><span>300 Kč</span><span>5 000 Kč</span></div>
-            </div>
-
-
-
-          </div><!-- /svc-form-left -->
-
+        <form id="svcForm" onsubmit="return false;">
           <div class="svc-form-right">
-            <h2>Vaše kontaktní údaje</h2>
+            <h2>Získejte nabídku zdarma</h2>
+            <p>Ozvu se vám do 24 hodin s nejlepšími nabídkami. Klienti průměrně ušetří <strong>3 000 Kč/rok</strong>.</p>
             <div class="svc-field">
               <label class="svc-label">Jméno a příjmení</label>
               <input type="text" class="svc-input" id="fieldJmeno" placeholder="Jan Novák" required />
@@ -278,8 +222,6 @@
             </div>
             <button type="submit" class="svc-submit" id="svcSubmit">Nezávazně srovnat zdarma →</button>
             <p class="svc-gdpr">🔒 Vaše údaje jsou v bezpečí. Používáme SSL šifrování.</p>
-          </div><!-- /svc-form-right -->
-
           </div>
         </form>
       </div>
@@ -399,37 +341,7 @@
   <script src="js/sheets.js"></script>
   <script src="js/main.js"></script>
   <script>
-    function formatRangeVal(id, val) {
-      if (id === 'fieldVek') return val + ' let';
-      if (id === 'fieldRozpocet') return Number(val).toLocaleString('cs-CZ') + ' Kč/měs.';
-      return val;
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.svc-pills').forEach(group => {
-        group.querySelectorAll('.svc-pill').forEach(pill => {
-          pill.addEventListener('click', () => {
-            group.querySelectorAll('.svc-pill').forEach(p => p.classList.remove('active'));
-            pill.classList.add('active');
-          });
-        });
-      });
-
-      document.querySelectorAll('.svc-range').forEach(range => {
-        const updateRange = () => {
-          const min = +range.min, max = +range.max, val = +range.value;
-          const pct = ((val - min) / (max - min) * 100).toFixed(1);
-          range.style.setProperty('--pct', pct + '%');
-          const display = range.dataset.display;
-          if (display) {
-            const el = document.getElementById(display);
-            if (el) el.textContent = formatRangeVal(range.id, val);
-          }
-        };
-        range.addEventListener('input', updateRange);
-        updateRange();
-      });
-
       const form = document.getElementById('svcForm');
       if (form) {
         form.addEventListener('submit', async (e) => {
@@ -438,17 +350,8 @@
           btn.textContent = 'Odesílám...';
           btn.disabled = true;
 
-          const pohlaviEl = document.querySelector('[data-group="pohlavi"] .svc-pill.active');
-          const koureniEl = document.querySelector('[data-group="koureni"] .svc-pill.active');
-          const checked = [...document.querySelectorAll('.svc-checks input:checked')].map(i => i.value);
-
           const data = {
             typ: 'zivotni-pojisteni',
-            vek: document.getElementById('fieldVek').value,
-            pohlavi: pohlaviEl ? pohlaviEl.dataset.val : '',
-            koureni: koureniEl ? koureniEl.dataset.val : '',
-            pojistit: checked.join(', '),
-            mesicni_rozpocet: document.getElementById('fieldRozpocet').value,
             jmeno: document.getElementById('fieldJmeno').value,
             telefon: document.getElementById('fieldTelefon').value,
             email: document.getElementById('fieldEmail').value,

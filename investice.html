@@ -32,11 +32,10 @@
     .svc-hero p { font-size: 1.1rem; color: rgba(255,255,255,.75); max-width: 520px; margin: 0 auto; }
 
     .svc-form-section { padding: 64px 0 80px; background: var(--gray-50); }
-    .svc-form-container { max-width: 1100px; }
+    .svc-form-container { max-width: 640px; }
     .svc-form-card {
       background: #fff; border-radius: 24px; padding: 48px;
       box-shadow: 0 8px 40px rgba(0,0,0,.1);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
     }
     .svc-form-left h2 { font-size: 1.1rem; font-weight: 800; margin-bottom: 28px; color: var(--text-900); }
     .svc-form-right h2 { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; color: var(--text-900); }
@@ -184,56 +183,10 @@
   <section class="svc-form-section">
     <div class="container svc-form-container">
       <div class="svc-form-card" id="svcFormCard">
-        <form id="svcForm" onsubmit="return false;" style="display:contents">
-          <div class="svc-form-left">
-            <h2>Investiční profil</h2>
-
-            <div class="svc-field">
-              <label class="svc-label">Cíl investice</label>
-              <div class="svc-pills" data-group="cil">
-                <span class="svc-pill active" data-val="Spoření na penzi">Spoření na penzi</span>
-                <span class="svc-pill" data-val="Finanční rezerva">Finanční rezerva</span>
-                <span class="svc-pill" data-val="Zhodnocení kapitálu">Zhodnocení kapitálu</span>
-                <span class="svc-pill" data-val="Vzdělání dítěte">Vzdělání dítěte</span>
-              </div>
-            </div>
-
-            <div class="svc-field">
-              <label class="svc-label">Měsíční investice: <span class="svc-range-val" id="displayCastka">3 000 Kč/měs.</span></label>
-              <input type="range" class="svc-range" id="fieldCastka" min="500" max="50000" value="3000" step="500" data-display="displayCastka" />
-              <div class="svc-range-limits"><span>500 Kč</span><span>50 000 Kč</span></div>
-            </div>
-
-            <div class="svc-field">
-              <label class="svc-label">Investiční horizont: <span class="svc-range-val" id="displayHorizont">10 let</span></label>
-              <input type="range" class="svc-range" id="fieldHorizont" min="1" max="40" value="10" step="1" data-display="displayHorizont" />
-              <div class="svc-range-limits"><span>1 rok</span><span>40 let</span></div>
-            </div>
-
-            <div class="svc-field">
-              <label class="svc-label">Tolerance rizika</label>
-              <div class="svc-pills" data-group="riziko">
-                <span class="svc-pill active" data-val="Konzervativní">Konzervativní (nízké riziko)</span>
-                <span class="svc-pill" data-val="Vyvážený">Vyvážený (střední riziko)</span>
-                <span class="svc-pill" data-val="Dynamický">Dynamický (vyšší riziko)</span>
-              </div>
-            </div>
-
-            <div class="svc-field">
-              <label class="svc-label">Aktuálně investujete?</label>
-              <div class="svc-pills" data-group="aktualne">
-                <span class="svc-pill active" data-val="Ne">Ne</span>
-                <span class="svc-pill" data-val="Ano, chci přehodnotit">Ano, chci přehodnotit</span>
-                <span class="svc-pill" data-val="Ano, první investice">Ano, první investice</span>
-              </div>
-            </div>
-
-
-
-          </div><!-- /svc-form-left -->
-
+        <form id="svcForm" onsubmit="return false;">
           <div class="svc-form-right">
-            <h2>Vaše kontaktní údaje</h2>
+            <h2>Získejte konzultaci zdarma</h2>
+            <p>Ozvu se vám do 24 hodin a nastavíme investiční plán přesně na míru vašim cílům.</p>
             <div class="svc-field">
               <label class="svc-label">Jméno a příjmení</label>
               <input type="text" class="svc-input" id="fieldJmeno" placeholder="Jan Novák" required />
@@ -254,8 +207,6 @@
             </div>
             <button type="submit" class="svc-submit" id="svcSubmit">Nezávazně srovnat zdarma →</button>
             <p class="svc-gdpr">🔒 Vaše údaje jsou v bezpečí. Používáme SSL šifrování.</p>
-          </div><!-- /svc-form-right -->
-
           </div>
         </form>
       </div>
@@ -375,37 +326,7 @@
   <script src="js/sheets.js"></script>
   <script src="js/main.js"></script>
   <script>
-    function formatRangeVal(id, val) {
-      if (id === 'fieldCastka') return Number(val).toLocaleString('cs-CZ') + ' Kč/měs.';
-      if (id === 'fieldHorizont') return val + (val == 1 ? ' rok' : val < 5 ? ' roky' : ' let');
-      return val;
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.svc-pills').forEach(group => {
-        group.querySelectorAll('.svc-pill').forEach(pill => {
-          pill.addEventListener('click', () => {
-            group.querySelectorAll('.svc-pill').forEach(p => p.classList.remove('active'));
-            pill.classList.add('active');
-          });
-        });
-      });
-
-      document.querySelectorAll('.svc-range').forEach(range => {
-        const updateRange = () => {
-          const min = +range.min, max = +range.max, val = +range.value;
-          const pct = ((val - min) / (max - min) * 100).toFixed(1);
-          range.style.setProperty('--pct', pct + '%');
-          const display = range.dataset.display;
-          if (display) {
-            const el = document.getElementById(display);
-            if (el) el.textContent = formatRangeVal(range.id, val);
-          }
-        };
-        range.addEventListener('input', updateRange);
-        updateRange();
-      });
-
       const form = document.getElementById('svcForm');
       if (form) {
         form.addEventListener('submit', async (e) => {
@@ -414,17 +335,8 @@
           btn.textContent = 'Odesílám...';
           btn.disabled = true;
 
-          const cilEl = document.querySelector('[data-group="cil"] .svc-pill.active');
-          const rizikoEl = document.querySelector('[data-group="riziko"] .svc-pill.active');
-          const aktualneEl = document.querySelector('[data-group="aktualne"] .svc-pill.active');
-
           const data = {
             typ: 'investice',
-            cil: cilEl ? cilEl.dataset.val : '',
-            mesicni_castka: document.getElementById('fieldCastka').value,
-            horizont: document.getElementById('fieldHorizont').value,
-            riziko: rizikoEl ? rizikoEl.dataset.val : '',
-            aktualne_investuje: aktualneEl ? aktualneEl.dataset.val : '',
             jmeno: document.getElementById('fieldJmeno').value,
             telefon: document.getElementById('fieldTelefon').value,
             email: document.getElementById('fieldEmail').value,

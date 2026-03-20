@@ -203,9 +203,9 @@ section { padding: 100px 0; }
 
 /* ======================== HERO ======================== */
 .hero {
-  position: relative; min-height: 100vh;
+  position: relative;
   display: flex; flex-direction: column;
-  padding-top: 70px; overflow: hidden;
+  padding-top: 70px; padding-bottom: 0; overflow: hidden;
   background: linear-gradient(135deg, #0d0a2e 0%, #1a1060 30%, #1e2fa0 65%, #2d7dd2 100%);
 }
 
@@ -247,10 +247,18 @@ section { padding: 100px 0; }
 
 .hero-inner {
   position: relative; z-index: 3;
-  display: grid; grid-template-columns: 1fr 480px;
-  gap: 60px; align-items: center;
-  padding: 60px 24px 80px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: center;
+  padding: 60px 24px 40px;
   max-width: 1180px; margin: 0 auto; width: 100%;
+}
+
+.hero-wave {
+  position: relative; z-index: 3;
+  line-height: 0; margin-top: auto;
+}
+.hero-wave svg {
+  display: block; width: 100%; height: 72px;
 }
 
 /* Hero text */
@@ -271,7 +279,7 @@ section { padding: 100px 0; }
 }
 
 .hero-text h1 {
-  font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900;
+  font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 900;
   line-height: 1.1; color: var(--white); margin-bottom: 24px;
   letter-spacing: -.03em;
   animation: fadeInUp .9s .1s ease both;
@@ -343,34 +351,34 @@ section { padding: 100px 0; }
 
 .spz-plate {
   display: flex; align-items: stretch;
-  height: 80px; border-radius: 8px; border: 3px solid #1d3a8a;
+  height: 54px; border-radius: 8px; border: 2px solid #1d3a8a;
   overflow: hidden; box-shadow: 0 4px 16px rgba(29,58,138,.25);
   transition: border-color var(--t), box-shadow var(--t);
 }
 .spz-plate:focus-within { border-color: #1d4ed8; box-shadow: 0 0 0 4px rgba(29,58,138,.2); }
 
 .plate-eu {
-  background: #003399; width: 62px; flex-shrink: 0;
+  background: #1e6bc4; width: 46px; flex-shrink: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 2px; padding: 6px 4px;
+  gap: 2px; padding: 4px 3px;
 }
 .plate-stars {
-  font-size: .6rem; color: #FFD700; letter-spacing: 1px;
+  font-size: .48rem; color: #FFD700; letter-spacing: 1px;
   line-height: 1; text-align: center; display: flex; gap: 1px;
-  flex-wrap: wrap; justify-content: center; max-width: 46px;
+  flex-wrap: wrap; justify-content: center; max-width: 36px;
 }
 .plate-cz {
-  font-size: 1rem; font-weight: 900; color: #fff;
+  font-size: .8rem; font-weight: 900; color: #fff;
   letter-spacing: .05em; line-height: 1;
 }
 .plate-input {
   flex: 1; border: none; outline: none;
-  background: #fff; font-size: 2rem; font-weight: 900;
-  letter-spacing: 4px; text-transform: uppercase;
-  color: #111; padding: 0 16px;
+  background: #fff; font-size: 1.3rem; font-weight: 900;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: #111; padding: 0 12px;
   font-family: 'Inter', sans-serif;
 }
-.plate-input::placeholder { color: #ccc; font-weight: 400; font-size: 1.2rem; letter-spacing: 2px; }
+.plate-input::placeholder { color: #ccc; font-weight: 400; font-size: .9rem; letter-spacing: 1px; text-transform: none; }
 
 .spz-hint {
   font-size: .78rem; color: var(--text-300); text-align: center; margin-top: 8px;
@@ -1294,24 +1302,158 @@ section { padding: 100px 0; }
 @keyframes fadeInDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ======================== RESPONSIVE ======================== */
+/* ======================== HERO MINI STATS ======================== */
+.hero-mini-stats {
+  display: flex; align-items: center; gap: 20px;
+  margin: 24px 0; animation: fadeInUp .9s .3s ease both;
+}
+.hms-item { text-align: center; }
+.hms-val { font-size: 1.25rem; font-weight: 800; color: var(--white); }
+.hms-lab { font-size: .7rem; color: rgba(255,255,255,.55); margin-top: 2px; }
+.hms-sep { width: 1px; height: 36px; background: rgba(255,255,255,.18); flex-shrink: 0; }
+
+/* ======================== HERO SPZ BOX (inline) ======================== */
+.hero-spz-box {
+  background: rgba(255,255,255,.97);
+  border-radius: var(--r-xl);
+  padding: 24px 28px;
+  margin-top: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.28), 0 0 0 1px rgba(255,255,255,.15);
+  animation: fadeInUp .9s .4s ease both;
+}
+
+/* ======================== SPZ INLINE ROW ======================== */
+.spz-inline-row {
+  display: inline-flex; gap: 10px; align-items: stretch;
+}
+.spz-inline-row .spz-plate {
+  flex: 1; min-width: 0; max-width: 100%;
+}
+.spz-inline-btn {
+  flex-shrink: 0; white-space: nowrap;
+  padding: 0 20px; font-size: .9rem;
+}
+
+/* ======================== HERO CAR IMAGE ======================== */
+.hero-car-wrap {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-car-img {
+  width: 100%;
+  object-fit: contain;
+}
+
+/* ======================== HERO CAR BADGES ======================== */
+.hero-car-badges {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.hcb-item {
+  position: absolute; display: flex; align-items: center; gap: 8px;
+  background: var(--white);
+  border-radius: 100px;
+  padding: 10px 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.15);
+  white-space: nowrap;
+}
+.hcb-item:first-child {
+  top: 10%; right: -5%;
+  animation: floatY 4s ease-in-out infinite;
+}
+.hcb-item:last-child {
+  bottom: 10%; left: -5%;
+  animation: floatY 4s ease-in-out infinite reverse;
+}
+.hcb-icon { font-size: 1.1rem; flex-shrink: 0; }
+.hcb-val { font-size: .8rem; font-weight: 800; color: var(--text-900); line-height: 1.2; }
+.hcb-lab { font-size: .68rem; color: var(--text-400); margin-top: 1px; line-height: 1.2; }
+
+/* ======================== LOGOS SECTION ======================== */
+.logos-section {
+  background: var(--white);
+  padding: 44px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+.logos-label {
+  text-align: center; font-size: .78rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .1em;
+  color: var(--text-300); margin-bottom: 20px;
+}
+
+/* Marquee wrapper – ořezává obsah + fade gradient */
+.logos-marquee-wrap {
+  overflow: hidden;
+  mask: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+.logos-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: logosScroll 28s linear infinite;
+}
+
+.logos-marquee-slide {
+  display: flex; align-items: center; flex-shrink: 0;
+}
+.logos-strip-item {
+  display: flex; align-items: center; justify-content: center;
+  padding: 8px 28px;
+}
+.logos-strip-item img {
+  height: 52px; width: auto; max-width: 150px;
+  object-fit: contain;
+  transition: transform var(--t);
+}
+.logos-strip-item:hover img { transform: scale(1.08); }
+
+@keyframes logosScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ======================== SERVICE CARD – INVESTICE barva ======================== */
+.service-card--invest .service-card-bg {
+  background: linear-gradient(145deg, rgba(255,237,213,.7), rgba(254,215,170,.4)) !important;
+}
+
+/* ======================== RESPONSIVE – 1100px ======================== */
 @media (max-width: 1100px) {
-  .hero-inner { grid-template-columns: 1fr; padding: 60px 24px; }
-  .glass-card { max-width: 500px; }
-  .o-mne-inner { grid-template-columns: 320px 1fr; gap: 48px; }
-  .hypoteka-inner { grid-template-columns: 1fr; gap: 48px; }
-  .faq-inner { grid-template-columns: 1fr; gap: 48px; }
-  .faq-image-wrap { display: none; }
+  .hero-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .o-mne-inner { grid-template-columns: 280px 1fr; gap: 40px; }
+  .faq-inner { grid-template-columns: 1fr; gap: 40px; }
   .services-grid { grid-template-columns: 1fr 1fr; }
   .uspory-grid { grid-template-columns: 1fr 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .stat-box { border-bottom: 1px solid var(--gray-200); }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
 
-@media (max-width: 768px) {
-  section { padding: 64px 0; }
+/* ======================== RESPONSIVE – 860px ======================== */
+@media (max-width: 860px) {
+  /* Hero – skryj auto, jen text + formulář */
+  .hero-inner { grid-template-columns: 1fr; gap: 0; padding: 40px 20px 0; }
+  .hero-car-wrap { display: none; }
+  .hero-mini-stats { gap: 16px; flex-wrap: wrap; }
+  .hms-sep { display: none; }
+  .hms-item { text-align: left; }
 
+  /* Loga */
+  .logos-strip-item { padding: 6px 16px; }
+  .logos-strip-item img { height: 38px; }
+
+  /* Ostatní */
+  .services-grid { grid-template-columns: 1fr; }
+  .o-mne-inner { grid-template-columns: 1fr; }
+  .o-mne-photo { max-width: 320px; margin: 0 auto; }
+  .kontakt-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+/* ======================== RESPONSIVE – 768px ======================== */
+@media (max-width: 768px) {
+  section { padding: 60px 0; }
+
+  /* Navbar – hamburger */
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
   .nav-links.open {
@@ -1321,57 +1463,104 @@ section { padding: 100px 0; }
     z-index: 999; border-bottom: 1px solid var(--gray-200);
   }
 
-  .hero-inner { grid-template-columns: 1fr; padding: 40px 20px 60px; gap: 40px; }
-  .hero-text h1 { font-size: 2.2rem; }
-  .float-cards { flex-direction: column; gap: 10px; }
-  .glass-card { padding: 24px 20px; border-radius: var(--r-xl); }
+  /* Hero */
+  .hero-inner { padding: 36px 20px 0; }
+  .hero-text h1 { font-size: 2rem; }
+  .hero-badge { font-size: .8rem; padding: 6px 14px; }
+  .hero-sub { font-size: .95rem; }
+  .hero-mini-stats { margin: 18px 0; }
+  .hms-val { font-size: 1.05rem; }
+  .hero-spz-box { padding: 18px 20px; margin-top: 18px; }
 
+  /* SPZ – pod sebou */
+  .spz-inline-row { flex-direction: column; display: flex; width: 100%; }
+  .spz-inline-row .spz-plate { flex: none; width: 100%; height: 52px; }
+  .spz-inline-btn { width: 100%; padding: 14px; justify-content: center; font-size: .95rem; }
+
+  /* Jak to funguje */
   .steps-grid { flex-direction: column; border-radius: var(--r-xl); }
   .step-card:not(:last-child) { border-right: none; border-bottom: 1px solid var(--gray-100); }
   .step-connector { display: none; }
+  .step-card { padding: 32px 24px; }
 
-  .services-grid { grid-template-columns: 1fr; }
-  .o-mne-inner { grid-template-columns: 1fr; }
-  .o-mne-photo { max-width: 340px; }
-  .experience-card { display: none; }
+  /* Úspory */
+  .uspory-grid { grid-template-columns: 1fr 1fr; }
 
-  .uspory-grid { grid-template-columns: 1fr; }
+  /* Recenze */
   .reviews-grid { grid-template-columns: 1fr; }
 
-  .kontakt-inner { grid-template-columns: 1fr; gap: 48px; }
-  .kontakt-img-wrap { display: none; }
+  /* Kontakt */
   .form-row { grid-template-columns: 1fr; }
 
-  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  /* Footer */
+  .footer-inner { grid-template-columns: 1fr; gap: 24px; }
   .footer-bottom .container { flex-direction: column; gap: 8px; text-align: center; }
 
+  /* Stats */
   .stats-grid { grid-template-columns: 1fr 1fr; }
-  .partners-bar-inner { flex-direction: column; gap: 12px; align-items: flex-start; }
 }
 
-@media (max-width: 480px) {
-  .stats-grid { grid-template-columns: 1fr; }
-  .hero-badges { flex-direction: column; }
+/* ======================== RESPONSIVE – 540px ======================== */
+@media (max-width: 540px) {
+  section { padding: 48px 0; }
+
+  .hero-inner { padding: 28px 16px 0; }
+  .hero-text h1 { font-size: 1.85rem; letter-spacing: -.02em; }
+  .hero-mini-stats { gap: 12px; }
+  .hero-spz-box { padding: 16px; border-radius: var(--r-lg); }
+
+  .uspory-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+
+  .service-card { padding: 28px 24px; }
+  .review-card { padding: 20px; }
+
   .o-mne-btns { flex-direction: column; }
+  .footer-inner { gap: 20px; }
 }
 
+/* ======================== RESPONSIVE – 390px ======================== */
 @media (max-width: 390px) {
   .container { padding: 0 14px; }
-  .glass-card { padding: 20px 16px; }
-  .hero-inner { padding: 24px 14px 40px; gap: 28px; }
-  .hero-text h1 { font-size: 1.9rem; }
-  .hero-badges { gap: 6px; }
-  .hero-badge-item { font-size: .78rem; padding: 6px 12px; }
-  .plate-input { font-size: 1.5rem; letter-spacing: 2px; padding: 0 10px; }
-  .plate-eu { width: 50px; }
-  .plate-cz { font-size: .85rem; }
-  .plate-stars { font-size: .28rem; max-width: 38px; }
-  .spz-plate { height: 68px; }
-  .float-card { padding: 10px 14px; }
-  .fc-val { font-size: .95rem; }
-  .spz-trust { gap: 10px; }
-  .trust-item { font-size: .7rem; }
-  .btn { padding: 12px 18px; font-size: .88rem; }
-  .btn-hero { padding: 15px 20px; font-size: .95rem; }
-  .partners-bar-inner { flex-direction: column; gap: 10px; }
+  .hero-inner { padding: 24px 14px 0; }
+  .hero-text h1 { font-size: 1.65rem; }
+  .hero-sub { font-size: .88rem; }
+  .hms-val { font-size: .95rem; }
+  .hero-spz-box { padding: 14px; }
+
+  .plate-input { font-size: 1.1rem; letter-spacing: 2px; padding: 0 10px; }
+  .plate-eu { width: 40px; }
+  .plate-cz { font-size: .72rem; }
+  .plate-stars { font-size: .38rem; max-width: 32px; }
+
+  .btn { padding: 11px 16px; font-size: .85rem; }
+  .btn-hero { font-size: .9rem; }
+
+  .stats-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+}
+
+/* ======================== RESPONSIVE – 340px (very small) ======================== */
+@media (max-width: 360px) {
+  .container { padding: 0 12px; }
+  .hero-inner { padding: 20px 12px 0; }
+  .hero-text h1 { font-size: 1.85rem; word-break: break-word; }
+  .hero-sub { font-size: .85rem; word-break: break-word; margin-top: 8px; margin-bottom: 16px; }
+  .hero-badge { font-size: .75rem; padding: 5px 10px; max-width: 100%; white-space: normal; text-align: center; }
+  .hero-spz-box { padding: 12px; }
+
+  /* Mini stats – pod sebou na 2 sloupce */
+  .hero-mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hms-val { font-size: .88rem; }
+  .hms-lab { font-size: .65rem; }
+
+  /* SPZ plate */
+  .spz-inline-row .spz-plate { flex: none; height: 52px; }
+  .plate-eu { width: 36px; flex-shrink: 0; }
+  .plate-cz { font-size: .65rem; }
+  .plate-stars { font-size: .32rem; max-width: 28px; }
+  .plate-input { font-size: 1rem; letter-spacing: 1px; padding: 0 8px; min-width: 0; }
+  .plate-input::placeholder { font-size: .8rem; letter-spacing: 0; }
+
+  .btn-hero { font-size: .85rem; padding: 12px 14px; }
 }

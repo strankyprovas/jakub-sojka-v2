@@ -66,6 +66,9 @@ function initScrollReveal() {
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Zpřístupni observer pro reviews.js (dynamicky přidané karty)
+  window._revealObserver = observer;
 }
 
 // ======================== SPZ ========================

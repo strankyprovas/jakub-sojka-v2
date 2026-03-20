@@ -211,16 +211,6 @@
             </div>
 
             <div class="svc-field">
-              <label class="svc-label">Rok výstavby</label>
-              <select class="svc-select" id="fieldRokVystavby">
-                <option value="Po roce 2000">Po roce 2000</option>
-                <option value="1980-2000">1980–2000</option>
-                <option value="1960-1980">1960–1980</option>
-                <option value="Před 1960">Před 1960</option>
-              </select>
-            </div>
-
-            <div class="svc-field">
               <label class="svc-label">PSČ nemovitosti</label>
               <input type="text" class="svc-input" id="fieldPsc" placeholder="např. 60200" maxlength="5" pattern="[0-9]{5}" />
             </div>
@@ -416,7 +406,6 @@
             typ: 'pojisteni-majetku',
             pojistit: typEl ? typEl.dataset.val : '',
             plocha: document.getElementById('fieldPlocha').value,
-            rok_vystavby: document.getElementById('fieldRokVystavby').value,
             psc: document.getElementById('fieldPsc').value,
             jmeno: document.getElementById('fieldJmeno').value,
             telefon: document.getElementById('fieldTelefon').value,
