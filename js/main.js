@@ -101,9 +101,7 @@ function initSPZ() {
       spzInput.focus();
       return;
     }
-    spzValue.textContent = spz;
-    spzFormExpand.classList.remove('hidden');
-    setTimeout(() => spzFormExpand.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+    window.location.href = 'pojisteni-vozidla.html?spz=' + encodeURIComponent(spz);
   });
 
   spzSubmit.addEventListener('click', async () => {

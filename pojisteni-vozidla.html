@@ -465,9 +465,13 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // SPZ uppercase
+      // SPZ – předvyplň z URL parametru a uppercase
       const spzInput = document.getElementById('fieldSpz');
-      if (spzInput) spzInput.addEventListener('input', () => { spzInput.value = spzInput.value.toUpperCase(); });
+      if (spzInput) {
+        const urlSpz = new URLSearchParams(window.location.search).get('spz');
+        if (urlSpz) spzInput.value = urlSpz.toUpperCase();
+        spzInput.addEventListener('input', () => { spzInput.value = spzInput.value.toUpperCase(); });
+      }
 
       // Pills
       document.querySelectorAll('.svc-pills').forEach(group => {
