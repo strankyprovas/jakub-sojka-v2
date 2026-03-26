@@ -180,8 +180,16 @@ async function fetchGoogleReviews() {
     const colors = ['#3b82f6','#8b5cf6','#10b981','#f59e0b','#ef4444','#06b6d4'];
     const grid = document.getElementById('reviewsGrid');
     if (grid) {
-      grid.innerHTML = '';
-      data.result.reviews.slice(0, 6).forEach((r, i) => {
+      // Sbírej jména statických recenzí (aby se neopakovaly)
+      const existingNames = [...grid.querySelectorAll('.review-name')]
+        .map(el => el.textContent.trim().toLowerCase());
+
+      const newReviews = data.result.reviews.filter(r =>
+        r.text && r.text.trim().length > 10 &&
+        !existingNames.includes(r.author_name.trim().toLowerCase())
+      );
+
+      newReviews.forEach((r, i) => {
         const initials = r.author_name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
         const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
         grid.insertAdjacentHTML('beforeend', `
@@ -193,17 +201,18 @@ async function fetchGoogleReviews() {
                 <div class="review-stars">${stars}</div>
                 <div class="review-date">${r.relative_time_description}</div>
               </div>
+              <div class="google-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285f4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+              </div>
             </div>
             <p class="review-text">"${r.text}"</p>
           </div>
         `);
       });
 
-      document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
-        new IntersectionObserver(([e]) => {
-          if (e.isIntersecting) { el.classList.add('visible'); }
-        }, { threshold: 0.12 }).observe(el);
-      });
+      if (window._revealObserver) {
+        grid.querySelectorAll('.reveal:not(.visible)').forEach(el => window._revealObserver.observe(el));
+      }
     }
 
     // Sekce recenzí – hodnocení a počet
