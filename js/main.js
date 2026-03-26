@@ -215,25 +215,7 @@ async function fetchGoogleReviews() {
       }
     }
 
-    // Sekce recenzí – hodnocení a počet
-    if (data.result.rating) {
-      const strong = document.querySelector('.g-info strong');
-      if (strong) strong.textContent = data.result.rating.toFixed(1);
-    }
-    if (data.result.user_ratings_total) {
-      const span = document.querySelector('.g-info span');
-      if (span) span.textContent = `· ${data.result.user_ratings_total} recenzí na Google`;
-    }
-
-    // Hero – hvězdičky a počet recenzí
-    if (data.result.rating) {
-      const heroRating = document.getElementById('heroRating');
-      if (heroRating) heroRating.textContent = `★ ${data.result.rating.toFixed(1)}`;
-    }
-    if (data.result.user_ratings_total) {
-      const heroCount = document.getElementById('heroRecenziCount');
-      if (heroCount) heroCount.textContent = `${data.result.user_ratings_total}+ Google recenzí`;
-    }
+    // Sekce recenzí a hero – hodnoty jsou hardcoded v HTML (API nenachází správný profil spolehlivě)
   } catch (e) {
     console.warn('Google Reviews: fallback na statické.', e);
   }
