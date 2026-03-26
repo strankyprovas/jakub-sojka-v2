@@ -1429,6 +1429,11 @@ section { padding: 100px 0; }
   .hms-sep { display: none; }
   .hms-item { text-align: left; }
 
+  /* Kalkulačky – stack columns */
+  .hypoteka-inner { grid-template-columns: 1fr; gap: 40px; }
+  .calc-result { position: static; }
+  .invest-result { position: static; }
+
   /* Loga */
   .logos-strip-item { padding: 6px 16px; }
   .logos-strip-item img { height: 38px; }

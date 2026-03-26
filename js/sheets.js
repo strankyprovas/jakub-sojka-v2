@@ -123,8 +123,34 @@ function getOrCreateSheet(spreadsheet, name, headers) {
 }
 
 function doGet(e) {
+  if (e && e.parameter && e.parameter.action === 'reviews') {
+    return getGoogleReviews();
+  }
   return ContentService
     .createTextOutput(JSON.stringify({ status: 'ok', message: 'Jakub Sojka – Sheets API běží' }))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+// Google Places proxy – API klíč ulož do Script Properties jako GOOGLE_API_KEY
+// (v Apps Scriptu: Project Settings → Script Properties → Add property)
+function getGoogleReviews() {
+  try {
+    const apiKey = PropertiesService.getScriptProperties().getProperty('GOOGLE_API_KEY');
+    const placeId = 'ChIJ8ZI1Bz0afUQROOfmcp43wHM=';
+    const url = 'https://maps.googleapis.com/maps/api/place/details/json'
+      + '?place_id=' + encodeURIComponent(placeId)
+      + '&fields=reviews,rating,user_ratings_total'
+      + '&language=cs'
+      + '&key=' + apiKey;
+    const response = UrlFetchApp.fetch(url);
+    const data = JSON.parse(response.getContentText());
+    return ContentService
+      .createTextOutput(JSON.stringify(data))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ error: err.message }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
 }
 */

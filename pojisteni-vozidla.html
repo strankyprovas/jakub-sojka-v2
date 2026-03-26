@@ -295,38 +295,32 @@
             <div class="svc-pills" data-group="pojisteni">
               <span class="svc-pill active" data-val="Povinné ručení">Povinné ručení</span>
               <span class="svc-pill" data-val="Havarijní pojištění">Havarijní pojištění</span>
-              <span class="svc-pill" data-val="Obě varianty">Obě varianty</span>
             </div>
           </div>
 
           <div class="svc-field">
-            <label class="svc-label">Rok výroby vozidla</label>
-            <select class="svc-select" id="fieldRokVyroby">
-              <option value="">– nevyplněno –</option>
-              <option value="2020-2024">2020–2024</option>
-              <option value="2015-2019">2015–2019</option>
-              <option value="2010-2014">2010–2014</option>
-              <option value="2005-2009">2005–2009</option>
-              <option value="Starší">Starší</option>
-            </select>
+            <label class="svc-label">Rodné číslo</label>
+            <input type="text" class="svc-input" id="fieldRodneCislo" placeholder="např. 900101/1234" autocomplete="off" />
           </div>
 
           <div class="svc-field">
-            <label class="svc-label">Věk hlavního řidiče</label>
-            <select class="svc-select" id="fieldVekRidice">
-              <option value="">– nevyplněno –</option>
-              <option value="18-25">18–25 let</option>
-              <option value="26-35">26–35 let</option>
-              <option value="36-45">36–45 let</option>
-              <option value="46-55">46–55 let</option>
-              <option value="56+">56+ let</option>
-            </select>
+            <label class="svc-label">Hodnota auta (Kč)</label>
+            <input type="number" class="svc-input" id="fieldHodnotaAuta" placeholder="např. 350000" min="0" />
           </div>
 
           <div class="svc-field">
-            <label class="svc-label">Aktuálně platíte: <span class="svc-range-val" id="displayCena">8 000 Kč/rok</span></label>
-            <input type="range" class="svc-range" id="fieldCena" min="1000" max="30000" value="8000" step="500" data-display="displayCena" />
-            <div class="svc-range-limits"><span>1 000 Kč</span><span>30 000 Kč</span></div>
+            <label class="svc-label">Předpokládaný roční nájezd (km)</label>
+            <input type="number" class="svc-input" id="fieldRocniNajezd" placeholder="např. 15000" min="0" />
+          </div>
+
+          <div class="svc-field">
+            <label class="svc-label">Aktuální nájezd (km)</label>
+            <input type="number" class="svc-input" id="fieldAktualniNajezd" placeholder="např. 82000" min="0" />
+          </div>
+
+          <div class="svc-field">
+            <label class="svc-label">PSČ</label>
+            <input type="text" class="svc-input" id="fieldPsc" placeholder="např. 602 00" maxlength="6" />
           </div>
 
           <button type="submit" class="svc-submit" id="step2Submit">Odeslat poptávku →</button>
@@ -456,9 +450,11 @@
       const data = {
         ...step1Data,
         pojisteni: pojisteniEl ? pojisteniEl.dataset.val : '',
-        rok_vyroby: document.getElementById('fieldRokVyroby')?.value || '',
-        vek_ridice: document.getElementById('fieldVekRidice')?.value || '',
-        aktualni_cena: document.getElementById('fieldCena')?.value || '',
+        rodne_cislo: document.getElementById('fieldRodneCislo')?.value || '',
+        hodnota_auta: document.getElementById('fieldHodnotaAuta')?.value || '',
+        rocni_najezd: document.getElementById('fieldRocniNajezd')?.value || '',
+        aktualni_najezd: document.getElementById('fieldAktualniNajezd')?.value || '',
+        psc: document.getElementById('fieldPsc')?.value || '',
         ...extra
       };
       return saveLead(data);
@@ -483,21 +479,7 @@
         });
       });
 
-      // Range slider
-      const cenaRange = document.getElementById('fieldCena');
-      if (cenaRange) {
-        const updateRange = () => {
-          const min = +cenaRange.min, max = +cenaRange.max, val = +cenaRange.value;
-          const pct = ((val - min) / (max - min) * 100).toFixed(1);
-          cenaRange.style.setProperty('--pct', pct + '%');
-          const el = document.getElementById('displayCena');
-          if (el) el.textContent = Number(val).toLocaleString('cs-CZ') + ' Kč/rok';
-        };
-        cenaRange.addEventListener('input', updateRange);
-        updateRange();
-      }
-
-      // Krok 1 – přejít na krok 2
+      // Krok 1 – uložit základní data + přejít na krok 2
       document.getElementById('step1Form').addEventListener('submit', (e) => {
         e.preventDefault();
         step1Data = {
@@ -508,6 +490,7 @@
           email: document.getElementById('fieldEmail').value,
           zdroj: 'pojisteni-vozidla'
         };
+        saveLead({ ...step1Data, zdroj: 'pojisteni-vozidla-krok1' });
         document.getElementById('step1Card').classList.add('hidden');
         document.getElementById('step2Card').classList.remove('hidden');
       });

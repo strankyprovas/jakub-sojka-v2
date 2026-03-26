@@ -168,58 +168,63 @@ function initKontaktForm() {
 
 // ======================== GOOGLE RECENZE ========================
 function initGoogleReviews() {
-  const GOOGLE_PLACES_ID = 'DOPLNIT_GOOGLE_PLACES_ID';
-  const GOOGLE_API_KEY = 'DOPLNIT_GOOGLE_API_KEY';
-  const GOOGLE_REVIEW_URL = `https://search.google.com/local/reviews?placeid=${GOOGLE_PLACES_ID}`;
-
-  const reviewLink = document.getElementById('googleReviewLink');
-  const allReviewsBtn = document.getElementById('allReviewsBtn');
-  if (reviewLink) reviewLink.href = GOOGLE_REVIEW_URL;
-  if (allReviewsBtn) allReviewsBtn.href = GOOGLE_REVIEW_URL;
-
-  if (GOOGLE_API_KEY !== 'DOPLNIT_GOOGLE_API_KEY') {
-    fetchGoogleReviews(GOOGLE_PLACES_ID, GOOGLE_API_KEY);
-  }
+  fetchGoogleReviews();
 }
 
-async function fetchGoogleReviews(placeId, apiKey) {
+async function fetchGoogleReviews() {
   try {
-    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=reviews,rating,user_ratings_total&language=cs&key=${apiKey}`;
-    const res = await fetch(url);
+    const res = await fetch(SHEETS_URL + '?action=reviews');
     const data = await res.json();
     if (!data.result?.reviews) return;
 
     const colors = ['#3b82f6','#8b5cf6','#10b981','#f59e0b','#ef4444','#06b6d4'];
     const grid = document.getElementById('reviewsGrid');
-    grid.innerHTML = '';
-
-    data.result.reviews.slice(0, 6).forEach((r, i) => {
-      const initials = r.author_name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
-      const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
-      grid.insertAdjacentHTML('beforeend', `
-        <div class="review-card reveal">
-          <div class="review-top">
-            <div class="review-avatar" style="--av-color:${colors[i % colors.length]}">${initials}</div>
-            <div class="review-meta">
-              <div class="review-name">${r.author_name}</div>
-              <div class="review-stars">${stars}</div>
-              <div class="review-date">${r.relative_time_description}</div>
+    if (grid) {
+      grid.innerHTML = '';
+      data.result.reviews.slice(0, 6).forEach((r, i) => {
+        const initials = r.author_name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+        const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+        grid.insertAdjacentHTML('beforeend', `
+          <div class="review-card reveal">
+            <div class="review-top">
+              <div class="review-avatar" style="--av-color:${colors[i % colors.length]}">${initials}</div>
+              <div class="review-meta">
+                <div class="review-name">${r.author_name}</div>
+                <div class="review-stars">${stars}</div>
+                <div class="review-date">${r.relative_time_description}</div>
+              </div>
             </div>
+            <p class="review-text">"${r.text}"</p>
           </div>
-          <p class="review-text">"${r.text}"</p>
-        </div>
-      `);
-    });
+        `);
+      });
 
-    // Re-apply scroll reveal on new elements
-    document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
-      new IntersectionObserver(([e]) => {
-        if (e.isIntersecting) { el.classList.add('visible'); }
-      }, { threshold: 0.12 }).observe(el);
-    });
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        new IntersectionObserver(([e]) => {
+          if (e.isIntersecting) { el.classList.add('visible'); }
+        }, { threshold: 0.12 }).observe(el);
+      });
+    }
 
-    if (data.result.rating) document.querySelector('.g-info strong').textContent = data.result.rating.toFixed(1);
-    if (data.result.user_ratings_total) document.querySelector('.g-info span').textContent = `· ${data.result.user_ratings_total} recenzí na Google`;
+    // Sekce recenzí – hodnocení a počet
+    if (data.result.rating) {
+      const strong = document.querySelector('.g-info strong');
+      if (strong) strong.textContent = data.result.rating.toFixed(1);
+    }
+    if (data.result.user_ratings_total) {
+      const span = document.querySelector('.g-info span');
+      if (span) span.textContent = `· ${data.result.user_ratings_total} recenzí na Google`;
+    }
+
+    // Hero – hvězdičky a počet recenzí
+    if (data.result.rating) {
+      const heroRating = document.getElementById('heroRating');
+      if (heroRating) heroRating.textContent = `★ ${data.result.rating.toFixed(1)}`;
+    }
+    if (data.result.user_ratings_total) {
+      const heroCount = document.getElementById('heroRecenziCount');
+      if (heroCount) heroCount.textContent = `${data.result.user_ratings_total}+ Google recenzí`;
+    }
   } catch (e) {
     console.warn('Google Reviews: fallback na statické.', e);
   }
