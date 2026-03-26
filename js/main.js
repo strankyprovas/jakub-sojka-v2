@@ -168,7 +168,7 @@ function initKontaktForm() {
 
 // ======================== GOOGLE RECENZE ========================
 function initGoogleReviews() {
-  fetchGoogleReviews();
+  // Google Places API nedokáže spolehlivě najít profil – recenze jsou statické
 }
 
 async function fetchGoogleReviews() {
