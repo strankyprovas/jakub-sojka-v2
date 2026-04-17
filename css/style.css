@@ -185,6 +185,7 @@ section { padding: 100px 0; }
 
 .logo { font-size: 1.3rem; font-weight: 800; color: var(--text-900); flex-shrink: 0; letter-spacing: -.02em; display: inline-flex; align-items: center; }
 .logo span { color: inherit; }
+.navbar .logo { margin-left: -16px; }
 .navbar .logo img { height: 76px; width: auto; display: block; }
 
 .nav-links { display: flex; gap: 2px; flex: 1; }
