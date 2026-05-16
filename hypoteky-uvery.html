@@ -203,18 +203,19 @@
       <div class="svc-form-card" id="svcFormCard">
         <form id="svcForm" onsubmit="return false;" style="display:contents">
           <div class="svc-form-left">
-            <h2>Parametry hypotéky</h2>
+            <h2>Parametry úvěru</h2>
 
             <div class="svc-field">
               <label class="svc-label">Účel úvěru</label>
               <div class="svc-pills" data-group="ucel">
                 <span class="svc-pill active" data-val="Hypotéka">Hypotéka</span>
                 <span class="svc-pill" data-val="Refinancování">Refinancování</span>
-                <span class="svc-pill" data-val="Rekonstrukce">Rekonstrukce</span>
+                <span class="svc-pill" data-val="Spotřebitelský">Spotřebitelský</span>
+                <span class="svc-pill" data-val="Pro podnikatele">Pro podnikatele</span>
               </div>
             </div>
 
-            <div class="svc-field">
+            <div class="svc-field hyp-only">
               <label class="svc-label">Hodnota nemovitosti: <span class="svc-range-val" id="displayHodnota">4 000 000 Kč</span></label>
               <input type="range" class="svc-range" id="fieldHodnota" min="1000000" max="15000000" value="4000000" step="100000" data-display="displayHodnota" />
               <div class="svc-range-limits"><span>1 mil. Kč</span><span>15 mil. Kč</span></div>
@@ -222,20 +223,20 @@
 
             <div class="svc-field">
               <div class="svc-label-row">
-                <label class="svc-label">Výše hypotéky: <span class="svc-range-val" id="displayHypoteka">3 000 000 Kč</span></label>
+                <label class="svc-label"><span id="vyseLabel">Výše hypotéky</span>: <span class="svc-range-val" id="displayHypoteka">3 000 000 Kč</span></label>
                 <span class="ltv-badge" id="ltvBadge">LTV 75%</span>
               </div>
               <input type="range" class="svc-range" id="fieldHypoteka" min="500000" max="15000000" value="3000000" step="100000" data-display="displayHypoteka" />
               <div class="svc-range-limits"><span>500 tis. Kč</span><span>15 mil. Kč</span></div>
             </div>
 
-            <div class="svc-field">
+            <div class="svc-field hyp-only">
               <label class="svc-label">Doba splatnosti: <span class="svc-range-val" id="displaySplatnost">25 let</span></label>
               <input type="range" class="svc-range" id="fieldSplatnost" min="5" max="30" value="25" step="1" data-display="displaySplatnost" />
               <div class="svc-range-limits"><span>5 let</span><span>30 let</span></div>
             </div>
 
-            <div class="svc-field">
+            <div class="svc-field hyp-only">
               <label class="svc-label">Typ příjmu</label>
               <div class="svc-pills" data-group="prijem">
                 <span class="svc-pill active" data-val="Zaměstnanec">Zaměstnanec</span>
@@ -417,14 +418,29 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      function applyUcel() {
+        const active = document.querySelector('[data-group="ucel"] .svc-pill.active');
+        const val = active ? active.dataset.val : 'Hypotéka';
+        const isHyp = (val === 'Hypotéka');
+        document.querySelectorAll('.hyp-only').forEach(el => {
+          el.style.display = isHyp ? '' : 'none';
+        });
+        const ltv = document.getElementById('ltvBadge');
+        if (ltv) ltv.style.display = isHyp ? '' : 'none';
+        const vyseLabel = document.getElementById('vyseLabel');
+        if (vyseLabel) vyseLabel.textContent = isHyp ? 'Výše hypotéky' : 'Výše úvěru';
+      }
+
       document.querySelectorAll('.svc-pills').forEach(group => {
         group.querySelectorAll('.svc-pill').forEach(pill => {
           pill.addEventListener('click', () => {
             group.querySelectorAll('.svc-pill').forEach(p => p.classList.remove('active'));
             pill.classList.add('active');
+            if (group.dataset.group === 'ucel') applyUcel();
           });
         });
       });
+      applyUcel();
 
       document.querySelectorAll('.svc-range').forEach(range => {
         const updateRange = () => {
